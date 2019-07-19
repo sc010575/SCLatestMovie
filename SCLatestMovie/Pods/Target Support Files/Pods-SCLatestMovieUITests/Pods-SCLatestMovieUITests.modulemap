@@ -1,0 +1,6 @@
+framework module Pods_SCLatestMovieUITests {
+  umbrella header "Pods-SCLatestMovieUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
