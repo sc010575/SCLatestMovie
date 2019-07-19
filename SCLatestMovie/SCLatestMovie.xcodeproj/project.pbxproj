@@ -17,6 +17,11 @@
 		C522F9C622E2495100109B4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C522F9C422E2495100109B4B /* LaunchScreen.storyboard */; };
 		C522F9D122E2495100109B4B /* SCLatestMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9D022E2495100109B4B /* SCLatestMovieTests.swift */; };
 		C522F9DC22E2495100109B4B /* SCLatestMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9DB22E2495100109B4B /* SCLatestMovieUITests.swift */; };
+		C522F9EE22E24EF200109B4B /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9ED22E24EF200109B4B /* Box.swift */; };
+		C522F9F122E24F8100109B4B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F022E24F8100109B4B /* Coordinator.swift */; };
+		C522F9F322E2505700109B4B /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F222E2505700109B4B /* ApplicationCoordinator.swift */; };
+		C522F9F722E2512900109B4B /* Serialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F622E2512900109B4B /* Serialize.swift */; };
+		C522F9FA22E251DD00109B4B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F922E251DD00109B4B /* Movie.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +62,11 @@
 		C522F9D722E2495100109B4B /* SCLatestMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCLatestMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C522F9DB22E2495100109B4B /* SCLatestMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLatestMovieUITests.swift; sourceTree = "<group>"; };
 		C522F9DD22E2495100109B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C522F9ED22E24EF200109B4B /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		C522F9F022E24F8100109B4B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		C522F9F222E2505700109B4B /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
+		C522F9F622E2512900109B4B /* Serialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serialize.swift; sourceTree = "<group>"; };
+		C522F9F922E251DD00109B4B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		E47C164603324FD48FE270B5 /* Pods-SCLatestMovieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCLatestMovieTests.release.xcconfig"; path = "Target Support Files/Pods-SCLatestMovieTests/Pods-SCLatestMovieTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6B11042859EE8DB03B19845 /* Pods_SCLatestMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCLatestMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,10 +134,11 @@
 		C522F9BA22E2494F00109B4B /* SCLatestMovie */ = {
 			isa = PBXGroup;
 			children = (
+				C522F9F822E2517C00109B4B /* Network Layer */,
+				C522F9F522E2510200109B4B /* Helper */,
+				C522F9EB22E24E9800109B4B /* Presentation Layer */,
 				C522F9EA22E249D000109B4B /* Model Layer */,
 				C522F9E922E2499E00109B4B /* App Infrastructure */,
-				C522F9BD22E2495000109B4B /* MovieListTableViewController.swift */,
-				C522F9BF22E2495000109B4B /* Main.storyboard */,
 				C522F9C722E2495100109B4B /* Info.plist */,
 			);
 			path = SCLatestMovie;
@@ -164,8 +175,60 @@
 		C522F9EA22E249D000109B4B /* Model Layer */ = {
 			isa = PBXGroup;
 			children = (
+				C522F9F922E251DD00109B4B /* Movie.swift */,
 			);
 			path = "Model Layer";
+			sourceTree = "<group>";
+		};
+		C522F9EB22E24E9800109B4B /* Presentation Layer */ = {
+			isa = PBXGroup;
+			children = (
+				C522F9BF22E2495000109B4B /* Main.storyboard */,
+				C522F9F422E250A800109B4B /* ViewControler */,
+				C522F9EF22E24F5600109B4B /* Coordinator */,
+				C522F9EC22E24EBC00109B4B /* Listener */,
+			);
+			path = "Presentation Layer";
+			sourceTree = "<group>";
+		};
+		C522F9EC22E24EBC00109B4B /* Listener */ = {
+			isa = PBXGroup;
+			children = (
+				C522F9ED22E24EF200109B4B /* Box.swift */,
+			);
+			path = Listener;
+			sourceTree = "<group>";
+		};
+		C522F9EF22E24F5600109B4B /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				C522F9F022E24F8100109B4B /* Coordinator.swift */,
+				C522F9F222E2505700109B4B /* ApplicationCoordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		C522F9F422E250A800109B4B /* ViewControler */ = {
+			isa = PBXGroup;
+			children = (
+				C522F9BD22E2495000109B4B /* MovieListTableViewController.swift */,
+			);
+			path = ViewControler;
+			sourceTree = "<group>";
+		};
+		C522F9F522E2510200109B4B /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				C522F9F622E2512900109B4B /* Serialize.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		C522F9F822E2517C00109B4B /* Network Layer */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Network Layer";
 			sourceTree = "<group>";
 		};
 		D732BA2FFBD4D49E6179B7E8 /* Pods */ = {
@@ -178,7 +241,6 @@
 				342F5043FEB286A3775E1DDD /* Pods-SCLatestMovieUITests.debug.xcconfig */,
 				215A3907F672B8BEE3FCAFFF /* Pods-SCLatestMovieUITests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -462,8 +524,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C522F9FA22E251DD00109B4B /* Movie.swift in Sources */,
+				C522F9F722E2512900109B4B /* Serialize.swift in Sources */,
+				C522F9F322E2505700109B4B /* ApplicationCoordinator.swift in Sources */,
+				C522F9F122E24F8100109B4B /* Coordinator.swift in Sources */,
 				C522F9BE22E2495000109B4B /* MovieListTableViewController.swift in Sources */,
 				C522F9BC22E2494F00109B4B /* AppDelegate.swift in Sources */,
+				C522F9EE22E24EF200109B4B /* Box.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
