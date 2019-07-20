@@ -21,14 +21,16 @@ class ApiController: NSObject {
             onNotReachable("Not connected to the network")
             return
         }
-        guard let url = Constant.movieURL else {return }
+        guard let url = Constant.movieURL else { return }
         let urlRequest = URLRequest(url: url)
         let config = URLSessionConfiguration.default
         let session = URLSession(configuration: config)
         let task = session.dataTask(with: urlRequest, completionHandler: {
             (data, response, error) in
             if error != nil, let error = error {
-                onFailure(error)
+                DispatchQueue.main.async {
+                    onFailure(error)
+                }
                 return
             } else {
                 if let httpResponse = response as? HTTPURLResponse,
