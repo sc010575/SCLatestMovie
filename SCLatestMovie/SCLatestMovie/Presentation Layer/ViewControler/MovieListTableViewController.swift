@@ -36,8 +36,12 @@ class MovieListTableViewController: UITableViewController {
         }
         
         let movie = viewModel.movies.value[indexPath.row]
-        cell.configureCell(movie.title, popularity: movie.popularity, imageUrl: movie.posterPath)
+        cell.configureCell(movie.title, popularity: movie.popularity, releaseDate:movie.releaseDate, imageUrl: movie.posterPath)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.useItemAtIndex(indexPath.row)
     }
 }
 

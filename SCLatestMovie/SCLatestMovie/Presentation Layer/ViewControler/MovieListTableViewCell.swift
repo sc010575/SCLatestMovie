@@ -14,8 +14,8 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var popularityLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    
+    @IBOutlet weak var releaseDateLabel: UILabel!
+
 
     //MARK:- Static function
     static var reuseIdentifier: String {
@@ -26,13 +26,17 @@ class MovieListTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
     }
-    
-    func configureCell(_ title:String, popularity:Double, imageUrl:String?) {
+
+    func configureCell(_ title: String, popularity: Double, releaseDate: String?, imageUrl: String?) {
         titleLabel.text = title
         popularityLabel.text = "\(popularity)"
-        
-        guard let url = URL(string: Constant.ImageURL + (imageUrl ?? "") ) else { return }
-        iconImageView.sd_setImage(with: url, completed: nil)
 
+        if let releaseDate = releaseDate {
+            releaseDateLabel.text = releaseDate
+        } else {
+            releaseDateLabel.text = "Release date not specified"
+        }
+        guard let url = URL(string: Constant.ImageURL + (imageUrl ?? "")) else { return }
+        iconImageView.sd_setImage(with: url, completed: nil)
     }
 }

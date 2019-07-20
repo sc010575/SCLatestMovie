@@ -8,15 +8,17 @@
 
 import Foundation
 
-class MovieList: Decodable {
+struct MovieList: Decodable {
     let results: [Movie]
 }
 
-class Movie: Decodable {
+struct Movie: Decodable {
     let title: String
     let overview: String
     let posterPath: String
     let voteAverage: Double
     let popularity: Double
-    let releaseDate : String
+    let releaseDate : String?
+    
+    static let emptyMovie = Movie(title: "", overview: "", posterPath: "", voteAverage: 0.0, popularity: 0.0, releaseDate: "")
 }

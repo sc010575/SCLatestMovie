@@ -5,7 +5,8 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -68,6 +69,7 @@
                                 <connections>
                                     <outlet property="iconImageView" destination="B4j-ao-49R" id="J5T-4g-D23"/>
                                     <outlet property="popularityLabel" destination="I17-Sx-ilE" id="Djr-q0-Lxb"/>
+                                    <outlet property="releaseDateLabel" destination="S7c-z1-vza" id="Bc7-O5-vyd"/>
                                     <outlet property="titleLabel" destination="03p-Eu-ql0" id="J5j-9c-D2L"/>
                                 </connections>
                             </tableViewCell>
@@ -82,6 +84,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgj-34-B9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="669.56521739130437" y="123.88392857142857"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="Oc2-9M-Bcs">
+            <objects>
+                <viewController storyboardIdentifier="MovieDetailViewController" id="jCc-Jf-sUz" customClass="MovieDetailViewController" customModule="SCLatestMovie" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0ql-CQ-X2c">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-E6-U5n">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="hml-tY-9EE">
+                                        <rect key="frame" x="57" y="66" width="300" height="300"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="HNb-9X-PHp"/>
+                                            <constraint firstAttribute="height" constant="300" id="QZn-hB-ixw"/>
+                                        </constraints>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sVL-df-Nu2">
+                                        <rect key="frame" x="8" y="381" width="438" height="1"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="a8R-TU-zlb"/>
+                                        </constraints>
+                                    </view>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview For the Movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UUa-E9-Usa">
+                                        <rect key="frame" x="20" y="392" width="300" height="26.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="3Qg-0U-cR6"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tpz-8r-hlh">
+                                        <rect key="frame" x="20" y="428.5" width="414" height="183"/>
+                                        <string key="text">Simba idolises his father, King Mufasa, and takes to heart his own royal destiny. But not everyone in the kingdom celebrates the new cub's arrival. Scar, Mufasa's brother—and former heir to the throne—has plans of his own. The battle for Pride Rock is ravaged with betrayal, tragedy and drama, ultimately resulting in Simba's exile. With help from a curious pair of newfound friends, Simba will have to figure out how to grow up and take back what is rightfully his.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="sVL-df-Nu2" firstAttribute="top" secondItem="hml-tY-9EE" secondAttribute="bottom" constant="15" id="39B-BR-Lfy"/>
+                                    <constraint firstItem="Tpz-8r-hlh" firstAttribute="top" secondItem="UUa-E9-Usa" secondAttribute="bottom" constant="10" id="Bga-f4-kwy"/>
+                                    <constraint firstItem="Tpz-8r-hlh" firstAttribute="width" secondItem="iD5-E6-U5n" secondAttribute="width" id="Dt2-eq-voE"/>
+                                    <constraint firstItem="hml-tY-9EE" firstAttribute="top" secondItem="iD5-E6-U5n" secondAttribute="top" constant="66" id="Ppb-27-dh3"/>
+                                    <constraint firstAttribute="trailing" secondItem="sVL-df-Nu2" secondAttribute="trailing" constant="8" id="Xgn-Gz-G9H"/>
+                                    <constraint firstAttribute="bottom" secondItem="Tpz-8r-hlh" secondAttribute="bottom" constant="20" id="d6h-oz-7fO"/>
+                                    <constraint firstAttribute="trailing" secondItem="Tpz-8r-hlh" secondAttribute="trailing" constant="20" id="dX5-Ud-q6Y"/>
+                                    <constraint firstItem="UUa-E9-Usa" firstAttribute="top" secondItem="sVL-df-Nu2" secondAttribute="bottom" constant="10" id="drm-tC-Ldc"/>
+                                    <constraint firstItem="hml-tY-9EE" firstAttribute="centerX" secondItem="iD5-E6-U5n" secondAttribute="centerX" id="fzQ-gl-HpS"/>
+                                    <constraint firstItem="sVL-df-Nu2" firstAttribute="leading" secondItem="iD5-E6-U5n" secondAttribute="leading" constant="8" id="usg-LX-Go8"/>
+                                    <constraint firstItem="Tpz-8r-hlh" firstAttribute="leading" secondItem="iD5-E6-U5n" secondAttribute="leading" constant="20" id="xCr-uQ-MoD"/>
+                                    <constraint firstItem="UUa-E9-Usa" firstAttribute="leading" secondItem="iD5-E6-U5n" secondAttribute="leading" constant="20" id="yf6-Me-TDs"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="oJx-32-PKT" firstAttribute="bottom" secondItem="iD5-E6-U5n" secondAttribute="bottom" id="Zo7-bW-6XN"/>
+                            <constraint firstItem="iD5-E6-U5n" firstAttribute="top" secondItem="oJx-32-PKT" secondAttribute="top" id="bkW-gb-Up8"/>
+                            <constraint firstItem="oJx-32-PKT" firstAttribute="trailing" secondItem="iD5-E6-U5n" secondAttribute="trailing" id="iif-15-2nt"/>
+                            <constraint firstItem="iD5-E6-U5n" firstAttribute="leading" secondItem="oJx-32-PKT" secondAttribute="leading" id="u0I-2b-JWt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="oJx-32-PKT"/>
+                    </view>
+                    <connections>
+                        <outlet property="overviewLabel" destination="Tpz-8r-hlh" id="eBv-dt-4ru"/>
+                        <outlet property="posterImageView" destination="hml-tY-9EE" id="TtN-fU-hRO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UiE-GH-mLx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1440.5797101449277" y="124.55357142857142"/>
         </scene>
     </scenes>
 </document>

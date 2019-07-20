@@ -12,14 +12,11 @@ import UIKit
 class MovieListCoordinator: Coordinator {
     
     private let presenter: UINavigationController
-    private var rootViewController: MovieListTableViewController?
-    
-  //  weak var delegate: RootViewModelCoordinatorDelegate?
-  //  private var rootDetailCoordinator: RootDetailCoordinator?
+    private var movieDetailCoordinator: MovieDetailCoordinator!
     
     init(presenter: UINavigationController) {
         self.presenter = presenter
- //       rootDetailCoordinator = RootDetailCoordinator(presenter: presenter)
+        self.movieDetailCoordinator = MovieDetailCoordinator(presenter: presenter)
     }
     
     func start() {
@@ -28,9 +25,17 @@ class MovieListCoordinator: Coordinator {
         rootViewController.title = "Loading..."
         let apiController = ApiController()
         let viewModel = MovieListViewModel(apiController)
-//        viewModel.coordinatorDelegate = self
+        viewModel.delegate = self
         rootViewController.viewModel = viewModel
         presenter.pushViewController(rootViewController, animated: true)
-        self.rootViewController = rootViewController
     }
+}
+
+extension MovieListCoordinator: MovieListViewModelCoordinatorDelegate {
+    func MovieListViewModelDidSelect(_ viewModel: MovieListViewModel, data: Movie) {
+        movieDetailCoordinator.movie = data
+        movieDetailCoordinator.start()
+    }
+    
+    
 }

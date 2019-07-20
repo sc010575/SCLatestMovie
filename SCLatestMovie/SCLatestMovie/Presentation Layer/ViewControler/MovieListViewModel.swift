@@ -8,12 +8,17 @@
 
 import Foundation
 
+protocol MovieListViewModelCoordinatorDelegate: class
+{
+    func MovieListViewModelDidSelect(_ viewModel: MovieListViewModel, data: Movie)
+}
 
 
 protocol MovieListViewModelProtocol: class {
 
     var apiController: ApiController { get set }
     var movies: Observer<[Movie]> { get set }
+    var delegate: MovieListViewModelCoordinatorDelegate? { get set}
     func fetchMovies()
 }
 
@@ -21,7 +26,8 @@ class MovieListViewModel: MovieListViewModelProtocol {
 
     var apiController: ApiController
     var movies: Observer<[Movie]> = Observer([])
-
+    weak var delegate: MovieListViewModelCoordinatorDelegate?
+    
     init(_ apiController: ApiController) {
         self.apiController = apiController
     }
@@ -42,5 +48,13 @@ class MovieListViewModel: MovieListViewModelProtocol {
     
     func moviesCount()-> Int {
         return movies.value.count
+    }
+    
+    func useItemAtIndex(_ index: Int)
+    {
+        if let delegate = delegate {
+            let movie = movies.value[index]
+            delegate.MovieListViewModelDidSelect(self, data: movie)
+        }
     }
 }
