@@ -18,16 +18,21 @@ protocol MovieListViewModelProtocol: class {
 
     var apiController: ApiController { get set }
     var movies: Observer<[Movie]> { get set }
-    var delegate: MovieListViewModelCoordinatorDelegate? { get set}
+    var delegate: MovieListViewModelCoordinatorDelegate? { get set }
     func fetchMovies()
+}
+
+enum State {
+    case noResults, failure(error: Error), dataError(error: String), notReachable(error: String), success
 }
 
 class MovieListViewModel: MovieListViewModelProtocol {
 
     var apiController: ApiController
     var movies: Observer<[Movie]> = Observer([])
+    var state: Observer<State> = Observer(.noResults)
     weak var delegate: MovieListViewModelCoordinatorDelegate?
-    
+
     init(_ apiController: ApiController) {
         self.apiController = apiController
     }
@@ -35,21 +40,20 @@ class MovieListViewModel: MovieListViewModelProtocol {
     //MARK:- Public methods
     func fetchMovies() {
         apiController.latestMovies(onSuccess: { (movieList) in
-            print(movieList.results[0].overview)
             self.movies.value = movieList.results
         }, onFailure: { (error) in
-                print(error.localizedDescription)
+                self.state.value = .failure(error: error)
             }, onNotReachable: { (result) in
-                print(result)
+                self.state.value = .notReachable(error: result)
             }) { (dataError) in
-            print(dataError)
+            self.state.value = .dataError(error: dataError)
         }
     }
-    
-    func moviesCount()-> Int {
+
+    func moviesCount() -> Int {
         return movies.value.count
     }
-    
+
     func useItemAtIndex(_ index: Int)
     {
         if let delegate = delegate {

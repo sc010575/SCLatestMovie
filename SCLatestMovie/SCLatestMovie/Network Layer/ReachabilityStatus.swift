@@ -9,13 +9,7 @@
 import Foundation
 import SystemConfiguration
 
-protocol Utilities {
-}
-
-
-extension NSObject: Utilities {
-    
-    
+extension NSObject {
     enum ReachabilityStatus {
         case notReachable
         case reachableViaWWAN

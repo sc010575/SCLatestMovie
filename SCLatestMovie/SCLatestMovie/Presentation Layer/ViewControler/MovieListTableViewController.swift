@@ -20,7 +20,21 @@ class MovieListTableViewController: UITableViewController {
             self.title = "Latest movies"
             self.tableView.reloadData()
         }
+        viewModel.state.bind { (state) in
+            switch state {
+            case .failure(let error):
+                self.errorWithMessage(message: error.localizedDescription)
+            case .notReachable(let result):
+                self.errorWithMessage(message: result)
+            case .dataError(let dataError):
+                self.errorWithMessage(message: dataError)
+            default:
+                break
+            }
+        }
     }
+    
+    //MARK:- tableView delegate
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.moviesCount()
@@ -42,6 +56,17 @@ class MovieListTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.useItemAtIndex(indexPath.row)
+    }
+    
+    //MARK:- Error message
+    
+    func errorWithMessage(message: String) {
+        
+        let alert = UIAlertController(title: "Service Error", message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(ok)
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }
 
