@@ -13,13 +13,14 @@ import Foundation
 protocol MovieListViewModelProtocol: class {
 
     var apiController: ApiController { get set }
-//    var curriculamVitae:Box<CurriculumVitae?> { get set }
-//    func useItemAtIndex(_ section: ElementsTitles, _ index: Int)
+    var movies: Observer<[Movie]> { get set }
+    func fetchMovies()
 }
 
 class MovieListViewModel: MovieListViewModelProtocol {
 
     var apiController: ApiController
+    var movies: Observer<[Movie]> = Observer([])
 
     init(_ apiController: ApiController) {
         self.apiController = apiController
@@ -29,6 +30,7 @@ class MovieListViewModel: MovieListViewModelProtocol {
     func fetchMovies() {
         apiController.latestMovies(onSuccess: { (movieList) in
             print(movieList.results[0].overview)
+            self.movies.value = movieList.results
         }, onFailure: { (error) in
                 print(error.localizedDescription)
             }, onNotReachable: { (result) in
@@ -36,5 +38,9 @@ class MovieListViewModel: MovieListViewModelProtocol {
             }) { (dataError) in
             print(dataError)
         }
+    }
+    
+    func moviesCount()-> Int {
+        return movies.value.count
     }
 }

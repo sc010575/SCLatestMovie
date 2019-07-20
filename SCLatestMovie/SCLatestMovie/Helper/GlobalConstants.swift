@@ -14,7 +14,7 @@ enum Constant {
     static let language = "language=en"
 
   //  static let testFileUrl = "http://localhost:8088/sc010575/feb733f8c6d6c38b9db4208fb7791567"
-    
+    static let ImageURL = "https://image.tmdb.org/t/p/w500"
     static var baseURL: String {
         
         if isUITest || isUnitTest {

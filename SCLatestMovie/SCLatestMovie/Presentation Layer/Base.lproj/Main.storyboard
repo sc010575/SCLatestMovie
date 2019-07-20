@@ -5,7 +5,7 @@
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,13 +18,58 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="zyc-UY-tU5">
-                                <rect key="frame" x="0.0" y="28" width="414" height="44"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieListTableViewCell" rowHeight="120" id="zyc-UY-tU5" customClass="MovieListTableViewCell" customModule="SCLatestMovie" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="120"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="zyc-UY-tU5" id="0JM-4R-5H7">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="119.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="B4j-ao-49R">
+                                            <rect key="frame" x="10" y="20" width="80" height="80"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="80" id="3cn-pq-BCO"/>
+                                                <constraint firstAttribute="height" constant="80" id="L6J-4a-8b2"/>
+                                            </constraints>
+                                        </imageView>
+                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="UCd-za-TbV">
+                                            <rect key="frame" x="100" y="10" width="314" height="101.5"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A new movie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03p-Eu-ql0">
+                                                    <rect key="frame" x="0.0" y="0.0" width="314" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Populer 6.9" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I17-Sx-ilE">
+                                                    <rect key="frame" x="0.0" y="36" width="314" height="29.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Jan 2019" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S7c-z1-vza">
+                                                    <rect key="frame" x="0.0" y="71.5" width="314" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </stackView>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="B4j-ao-49R" firstAttribute="leading" secondItem="0JM-4R-5H7" secondAttribute="leading" constant="10" id="0O5-1b-lYe"/>
+                                        <constraint firstItem="UCd-za-TbV" firstAttribute="leading" secondItem="B4j-ao-49R" secondAttribute="trailing" constant="10" id="1U9-3W-sk1"/>
+                                        <constraint firstAttribute="trailing" secondItem="UCd-za-TbV" secondAttribute="trailing" id="Fsm-fr-jKQ"/>
+                                        <constraint firstItem="UCd-za-TbV" firstAttribute="top" secondItem="0JM-4R-5H7" secondAttribute="top" constant="10" id="MjN-9M-ppF"/>
+                                        <constraint firstItem="B4j-ao-49R" firstAttribute="centerY" secondItem="0JM-4R-5H7" secondAttribute="centerY" id="QNF-dd-KW7"/>
+                                        <constraint firstAttribute="bottom" secondItem="UCd-za-TbV" secondAttribute="bottom" constant="8" id="RbA-h8-4g8"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="iconImageView" destination="B4j-ao-49R" id="J5T-4g-D23"/>
+                                    <outlet property="popularityLabel" destination="I17-Sx-ilE" id="Djr-q0-Lxb"/>
+                                    <outlet property="titleLabel" destination="03p-Eu-ql0" id="J5j-9c-D2L"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -36,7 +81,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zgj-34-B9W" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="670" y="124"/>
+            <point key="canvasLocation" x="669.56521739130437" y="123.88392857142857"/>
         </scene>
     </scenes>
 </document>
