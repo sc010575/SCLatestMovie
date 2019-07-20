@@ -17,11 +17,16 @@
 		C522F9C622E2495100109B4B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C522F9C422E2495100109B4B /* LaunchScreen.storyboard */; };
 		C522F9D122E2495100109B4B /* SCLatestMovieTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9D022E2495100109B4B /* SCLatestMovieTests.swift */; };
 		C522F9DC22E2495100109B4B /* SCLatestMovieUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9DB22E2495100109B4B /* SCLatestMovieUITests.swift */; };
-		C522F9EE22E24EF200109B4B /* Box.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9ED22E24EF200109B4B /* Box.swift */; };
+		C522F9EE22E24EF200109B4B /* Observer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9ED22E24EF200109B4B /* Observer.swift */; };
 		C522F9F122E24F8100109B4B /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F022E24F8100109B4B /* Coordinator.swift */; };
 		C522F9F322E2505700109B4B /* ApplicationCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F222E2505700109B4B /* ApplicationCoordinator.swift */; };
 		C522F9F722E2512900109B4B /* Serialize.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F622E2512900109B4B /* Serialize.swift */; };
 		C522F9FA22E251DD00109B4B /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9F922E251DD00109B4B /* Movie.swift */; };
+		C522F9FC22E2697B00109B4B /* GlobalConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9FB22E2697B00109B4B /* GlobalConstants.swift */; };
+		C522F9FE22E26B4100109B4B /* ApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9FD22E26B4100109B4B /* ApiController.swift */; };
+		C522FA0022E26C8800109B4B /* ReachabilityStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9FF22E26C8800109B4B /* ReachabilityStatus.swift */; };
+		C522FA0222E2E40500109B4B /* MovieListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA0122E2E40500109B4B /* MovieListCoordinator.swift */; };
+		C522FA0422E2E52600109B4B /* MovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA0322E2E52600109B4B /* MovieListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,11 +67,16 @@
 		C522F9D722E2495100109B4B /* SCLatestMovieUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SCLatestMovieUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C522F9DB22E2495100109B4B /* SCLatestMovieUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SCLatestMovieUITests.swift; sourceTree = "<group>"; };
 		C522F9DD22E2495100109B4B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C522F9ED22E24EF200109B4B /* Box.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Box.swift; sourceTree = "<group>"; };
+		C522F9ED22E24EF200109B4B /* Observer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observer.swift; sourceTree = "<group>"; };
 		C522F9F022E24F8100109B4B /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		C522F9F222E2505700109B4B /* ApplicationCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCoordinator.swift; sourceTree = "<group>"; };
 		C522F9F622E2512900109B4B /* Serialize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Serialize.swift; sourceTree = "<group>"; };
 		C522F9F922E251DD00109B4B /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		C522F9FB22E2697B00109B4B /* GlobalConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalConstants.swift; sourceTree = "<group>"; };
+		C522F9FD22E26B4100109B4B /* ApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiController.swift; sourceTree = "<group>"; };
+		C522F9FF22E26C8800109B4B /* ReachabilityStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityStatus.swift; sourceTree = "<group>"; };
+		C522FA0122E2E40500109B4B /* MovieListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListCoordinator.swift; sourceTree = "<group>"; };
+		C522FA0322E2E52600109B4B /* MovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewModel.swift; sourceTree = "<group>"; };
 		E47C164603324FD48FE270B5 /* Pods-SCLatestMovieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCLatestMovieTests.release.xcconfig"; path = "Target Support Files/Pods-SCLatestMovieTests/Pods-SCLatestMovieTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6B11042859EE8DB03B19845 /* Pods_SCLatestMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCLatestMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -194,7 +204,7 @@
 		C522F9EC22E24EBC00109B4B /* Listener */ = {
 			isa = PBXGroup;
 			children = (
-				C522F9ED22E24EF200109B4B /* Box.swift */,
+				C522F9ED22E24EF200109B4B /* Observer.swift */,
 			);
 			path = Listener;
 			sourceTree = "<group>";
@@ -204,6 +214,7 @@
 			children = (
 				C522F9F022E24F8100109B4B /* Coordinator.swift */,
 				C522F9F222E2505700109B4B /* ApplicationCoordinator.swift */,
+				C522FA0122E2E40500109B4B /* MovieListCoordinator.swift */,
 			);
 			path = Coordinator;
 			sourceTree = "<group>";
@@ -212,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				C522F9BD22E2495000109B4B /* MovieListTableViewController.swift */,
+				C522FA0322E2E52600109B4B /* MovieListViewModel.swift */,
 			);
 			path = ViewControler;
 			sourceTree = "<group>";
@@ -220,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				C522F9F622E2512900109B4B /* Serialize.swift */,
+				C522F9FB22E2697B00109B4B /* GlobalConstants.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -227,6 +240,8 @@
 		C522F9F822E2517C00109B4B /* Network Layer */ = {
 			isa = PBXGroup;
 			children = (
+				C522F9FD22E26B4100109B4B /* ApiController.swift */,
+				C522F9FF22E26C8800109B4B /* ReachabilityStatus.swift */,
 			);
 			path = "Network Layer";
 			sourceTree = "<group>";
@@ -527,10 +542,15 @@
 				C522F9FA22E251DD00109B4B /* Movie.swift in Sources */,
 				C522F9F722E2512900109B4B /* Serialize.swift in Sources */,
 				C522F9F322E2505700109B4B /* ApplicationCoordinator.swift in Sources */,
+				C522FA0222E2E40500109B4B /* MovieListCoordinator.swift in Sources */,
 				C522F9F122E24F8100109B4B /* Coordinator.swift in Sources */,
+				C522FA0022E26C8800109B4B /* ReachabilityStatus.swift in Sources */,
 				C522F9BE22E2495000109B4B /* MovieListTableViewController.swift in Sources */,
 				C522F9BC22E2494F00109B4B /* AppDelegate.swift in Sources */,
-				C522F9EE22E24EF200109B4B /* Box.swift in Sources */,
+				C522F9FC22E2697B00109B4B /* GlobalConstants.swift in Sources */,
+				C522F9EE22E24EF200109B4B /* Observer.swift in Sources */,
+				C522F9FE22E26B4100109B4B /* ApiController.swift in Sources */,
+				C522FA0422E2E52600109B4B /* MovieListViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

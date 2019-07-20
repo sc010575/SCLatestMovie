@@ -12,17 +12,17 @@ import UIKit
 class ApplicationCoordinator: Coordinator {
     let window: UIWindow
     let navigationController: UINavigationController
-    //   let rootViewCoordinator: RootViewCoordinator
-    
+    let rootViewCoordinator: MovieListCoordinator
+
     init(window: UIWindow) {
         self.window = window
         navigationController = UINavigationController()
         navigationController.navigationBar.prefersLargeTitles = true
-        //        rootViewCoordinator = RootViewCoordinator(presenter: navigationController)
+        rootViewCoordinator = MovieListCoordinator(presenter: navigationController)
     }
     func start() {
         window.rootViewController = navigationController
-        //        rootViewCoordinator.start()
+        rootViewCoordinator.start()
         window.makeKeyAndVisible()
     }
 }

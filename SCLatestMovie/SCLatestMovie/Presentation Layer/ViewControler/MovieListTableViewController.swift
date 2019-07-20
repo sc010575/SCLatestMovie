@@ -9,10 +9,12 @@
 import UIKit
 
 class MovieListTableViewController: UITableViewController {
+    var viewModel: MovieListViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        tableView.tableFooterView = UIView()
+        viewModel.fetchMovies()
     }
 }
 

@@ -8,11 +8,15 @@
 
 import Foundation
 
+class MovieList: Decodable {
+    let results: [Movie]
+}
+
 class Movie: Decodable {
     let title: String
     let overview: String
     let posterPath: String
-    let rating: Double
     let voteAverage: Double
     let popularity: Double
+    let releaseDate : String
 }
