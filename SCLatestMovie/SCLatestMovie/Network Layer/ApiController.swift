@@ -35,7 +35,6 @@ class ApiController: NSObject {
                     httpResponse.statusCode == 200, let data = data {
                     DispatchQueue.main.async {
                         if let movies: MovieList = ParseJson.parse(data: data) {
-                            print(movies.results.count)
                             onSuccess(movies)
                             return
                         }

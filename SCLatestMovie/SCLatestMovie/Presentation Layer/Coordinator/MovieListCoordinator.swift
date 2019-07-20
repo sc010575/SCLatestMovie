@@ -36,6 +36,4 @@ extension MovieListCoordinator: MovieListViewModelCoordinatorDelegate {
         movieDetailCoordinator.movie = data
         movieDetailCoordinator.start()
     }
-    
-    
 }

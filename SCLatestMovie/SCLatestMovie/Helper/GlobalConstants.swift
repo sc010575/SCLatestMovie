@@ -18,10 +18,10 @@ enum Constant {
     static var baseURL: String {
         
         if isUITest || isUnitTest {
-            return "http://localhost:8088"
+            return "https://localhost:8088"
         }
         
-        return "http://api.themoviedb.org/3/movie"
+        return "https://api.themoviedb.org/3/movie"
     }
     
     static var movieURL: URL? {

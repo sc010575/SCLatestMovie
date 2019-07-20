@@ -36,7 +36,7 @@ class MovieListTableViewController: UITableViewController {
         }
         
         let movie = viewModel.movies.value[indexPath.row]
-        cell.configureCell(movie.title, popularity: movie.popularity, releaseDate:movie.releaseDate, imageUrl: movie.posterPath)
+        cell.configureCell(movie.title, voteCount: movie.voteAverage ?? 0, releaseDate:movie.releaseDate, imageUrl: movie.posterPath)
         return cell
     }
     

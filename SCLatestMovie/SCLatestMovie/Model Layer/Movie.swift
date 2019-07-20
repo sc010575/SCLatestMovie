@@ -16,8 +16,8 @@ struct Movie: Decodable {
     let title: String
     let overview: String
     let posterPath: String
-    let voteAverage: Double
-    let popularity: Double
+    let voteAverage: Double?
+    let popularity: Double?
     let releaseDate : String?
     
     static let emptyMovie = Movie(title: "", overview: "", posterPath: "", voteAverage: 0.0, popularity: 0.0, releaseDate: "")

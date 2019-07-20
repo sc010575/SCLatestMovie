@@ -15,11 +15,13 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var overviewLabel: UILabel!
     var viewModel: MovieDetailViewModel!
     
+    @IBOutlet weak var popularityLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
         viewModel.movie.bind { [weak self] (movie) in
             self?.overviewLabel .text = movie.overview
             self?.title = movie.title
+            self?.popularityLabel.text = "Like: \(Int(movie.popularity ?? 0 ))👌"
             guard let url = URL(string: Constant.ImageURL + movie.posterPath) else { return }
 
             self?.posterImageView.sd_setImage(with: url, completed: nil)
