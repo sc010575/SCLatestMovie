@@ -27,7 +27,7 @@ Latest Movie list and details about movies to watch
 - Universal App that support different layouts for iPhone and iPad in horizental and vertical orientation.
 
 ### Code Coverage
-Current code coverage is 84.2%
+- Current code coverage is 84.2%
 
 ### Features
 - After launching the application it will make an api call to retrive upcoming movie list
