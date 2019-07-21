@@ -13,12 +13,12 @@ enum Constant {
     static let queryType = "upcoming"
     static let language = "language=en"
 
-  //  static let testFileUrl = "http://localhost:8088/sc010575/feb733f8c6d6c38b9db4208fb7791567"
+    static let testFileUrl = "http://localhost:8088/3/movie/upcoming"
     static let ImageURL = "https://image.tmdb.org/t/p/w500"
     static var baseURL: String {
         
         if isUITest || isUnitTest {
-            return "https://localhost:8088"
+            return "http://localhost:8088/3/movie"
         }
         
         return "https://api.themoviedb.org/3/movie"
@@ -26,7 +26,7 @@ enum Constant {
     
     static var movieURL: URL? {
         let url = "\(baseURL)/\(queryType)?api_key=\(apiKey)&\(language)"
-        return URL(string: url)
+        return  isUnderTest ? URL(string: Constant.testFileUrl) : URL(string: url)
     }
     
 

@@ -34,6 +34,10 @@
 		C522FA1522E3CBC900109B4B /* Fixture.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA1422E3CBC900109B4B /* Fixture.swift */; };
 		C522FA1722E3CC4C00109B4B /* MovieListTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA1622E3CC4C00109B4B /* MovieListTest.swift */; };
 		C522FA1922E3D33300109B4B /* empty.json in Resources */ = {isa = PBXBuildFile; fileRef = C522FA1822E3D33300109B4B /* empty.json */; };
+		C522FA1C22E3DF7800109B4B /* MockServer.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA1B22E3DF7800109B4B /* MockServer.swift */; };
+		C522FA1E22E3E01300109B4B /* movielistresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = C522FA1D22E3E01300109B4B /* movielistresponse.json */; };
+		C522FA2122E4451300109B4B /* ApiControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2022E4451300109B4B /* ApiControllerTest.swift */; };
+		C522FA2422E4626800109B4B /* errorresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = C522FA2322E4626800109B4B /* errorresponse.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +95,10 @@
 		C522FA1422E3CBC900109B4B /* Fixture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fixture.swift; sourceTree = "<group>"; };
 		C522FA1622E3CC4C00109B4B /* MovieListTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTest.swift; sourceTree = "<group>"; };
 		C522FA1822E3D33300109B4B /* empty.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = empty.json; sourceTree = "<group>"; };
+		C522FA1B22E3DF7800109B4B /* MockServer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockServer.swift; sourceTree = "<group>"; };
+		C522FA1D22E3E01300109B4B /* movielistresponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movielistresponse.json; sourceTree = "<group>"; };
+		C522FA2022E4451300109B4B /* ApiControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiControllerTest.swift; sourceTree = "<group>"; };
+		C522FA2322E4626800109B4B /* errorresponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = errorresponse.json; sourceTree = "<group>"; };
 		E47C164603324FD48FE270B5 /* Pods-SCLatestMovieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCLatestMovieTests.release.xcconfig"; path = "Target Support Files/Pods-SCLatestMovieTests/Pods-SCLatestMovieTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6B11042859EE8DB03B19845 /* Pods_SCLatestMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCLatestMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -171,6 +179,8 @@
 		C522F9CF22E2495100109B4B /* SCLatestMovieTests */ = {
 			isa = PBXGroup;
 			children = (
+				C522FA1F22E444FE00109B4B /* Network */,
+				C522FA1A22E3DF6300109B4B /* MockServer */,
 				C522FA1322E3CB8B00109B4B /* Fixture */,
 				C522FA1022E3CAB800109B4B /* Json */,
 				C522FA0F22E3CA7D00109B4B /* Model */,
@@ -295,6 +305,8 @@
 			children = (
 				C522FA1122E3CADD00109B4B /* movilist.json */,
 				C522FA1822E3D33300109B4B /* empty.json */,
+				C522FA1D22E3E01300109B4B /* movielistresponse.json */,
+				C522FA2322E4626800109B4B /* errorresponse.json */,
 			);
 			path = Json;
 			sourceTree = "<group>";
@@ -305,6 +317,22 @@
 				C522FA1422E3CBC900109B4B /* Fixture.swift */,
 			);
 			path = Fixture;
+			sourceTree = "<group>";
+		};
+		C522FA1A22E3DF6300109B4B /* MockServer */ = {
+			isa = PBXGroup;
+			children = (
+				C522FA1B22E3DF7800109B4B /* MockServer.swift */,
+			);
+			path = MockServer;
+			sourceTree = "<group>";
+		};
+		C522FA1F22E444FE00109B4B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				C522FA2022E4451300109B4B /* ApiControllerTest.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		D732BA2FFBD4D49E6179B7E8 /* Pods */ = {
@@ -441,8 +469,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C522FA1E22E3E01300109B4B /* movielistresponse.json in Resources */,
 				C522FA1222E3CADD00109B4B /* movilist.json in Resources */,
 				C522FA1922E3D33300109B4B /* empty.json in Resources */,
+				C522FA2422E4626800109B4B /* errorresponse.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +656,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C522FA2122E4451300109B4B /* ApiControllerTest.swift in Sources */,
+				C522FA1C22E3DF7800109B4B /* MockServer.swift in Sources */,
 				C522FA1722E3CC4C00109B4B /* MovieListTest.swift in Sources */,
 				C522FA1522E3CBC900109B4B /* Fixture.swift in Sources */,
 			);
