@@ -11,34 +11,10 @@ import SDWebImage
 
 class MovieListTableViewCell: UITableViewCell {
 
-    enum Rating: Double {
-        typealias RawValue = Double
-        case verygood
-        case good
-        case average
-        case poor
-        case noRating
-
-        func getRange(_ votingAverage: Double) -> Rating {
-            switch votingAverage {
-            case 8 ..< 11: return .verygood
-            case 6 ..< 8: return .good
-            case 4 ..< 6: return .average
-            case 1 ..< 4: return .poor
-            case 0: return .noRating
-            default:
-                break
-            }
-            return .noRating
-        }
-    }
-
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var voteCountLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var releaseDateLabel: UILabel!
-
-    var rating: Rating = .noRating
 
     //MARK:- Static function
     static var reuseIdentifier: String {
@@ -50,10 +26,9 @@ class MovieListTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
 
-    func configureCell(_ title: String, voteCount: Double, releaseDate: String?, imageUrl: String?) {
+    func configureCell(_ title: String, rating: String, releaseDate: String?, imageUrl: String?) {
         titleLabel.text = title
-        let userReview = userVote(from: voteCount)
-        voteCountLabel.text = "Rating: \(userReview)"
+        voteCountLabel.text = "Rating: \(rating)"
         if let releaseDate = releaseDate {
             releaseDateLabel.text = releaseDate
         } else {
@@ -61,21 +36,5 @@ class MovieListTableViewCell: UITableViewCell {
         }
         guard let url = URL(string: Constant.ImageURL + (imageUrl ?? "")) else { return }
         iconImageView.sd_setImage(with: url, completed: nil)
-    }
-
-    func userVote(from voteCount: Double) -> String {
-        let userRating = rating.getRange(voteCount)
-        switch userRating {
-        case .verygood:
-            return "Great Movie! 👍"
-        case .good:
-            return "Good Movie! ✋"
-        case .average:
-            return "Ok type 🤔 "
-        case .poor:
-            return "Poor. 👎"
-        case .noRating:
-            return "No rating 🙄"
-        }
     }
 }

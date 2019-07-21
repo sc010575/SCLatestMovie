@@ -15,7 +15,8 @@ class MovieDetailViewController: UIViewController {
 
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var overviewLabel: UILabel!
-    
+    @IBOutlet weak var movieTypeLabel: UILabel!
+
     @IBOutlet weak var popularityLabel: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,5 +29,6 @@ class MovieDetailViewController: UIViewController {
         self.popularityLabel.text = "Like: \(Int(movie.popularity ?? 0 ))👌"
         guard let url = URL(string: Constant.ImageURL + movie.posterPath) else { return }
         self.posterImageView.sd_setImage(with: url, completed: nil)
+        self.movieTypeLabel.text = movie.movieType()
     }
 }

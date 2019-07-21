@@ -39,6 +39,7 @@
 		C522FA2422E4626800109B4B /* errorresponse.json in Resources */ = {isa = PBXBuildFile; fileRef = C522FA2322E4626800109B4B /* errorresponse.json */; };
 		C522FA2622E4696E00109B4B /* MovieDetailViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2522E4696E00109B4B /* MovieDetailViewControllerTest.swift */; };
 		C522FA2922E46A4C00109B4B /* Viewcontroller+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2822E46A4C00109B4B /* Viewcontroller+Test.swift */; };
+		C522FA2C22E474C100109B4B /* MovieListTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,6 +102,7 @@
 		C522FA2322E4626800109B4B /* errorresponse.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = errorresponse.json; sourceTree = "<group>"; };
 		C522FA2522E4696E00109B4B /* MovieDetailViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewControllerTest.swift; sourceTree = "<group>"; };
 		C522FA2822E46A4C00109B4B /* Viewcontroller+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Viewcontroller+Test.swift"; sourceTree = "<group>"; };
+		C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewControllerTest.swift; sourceTree = "<group>"; };
 		E47C164603324FD48FE270B5 /* Pods-SCLatestMovieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCLatestMovieTests.release.xcconfig"; path = "Target Support Files/Pods-SCLatestMovieTests/Pods-SCLatestMovieTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6B11042859EE8DB03B19845 /* Pods_SCLatestMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCLatestMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -350,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				C522FA2522E4696E00109B4B /* MovieDetailViewControllerTest.swift */,
+				C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -676,6 +679,7 @@
 			files = (
 				C522FA2122E4451300109B4B /* ApiControllerTest.swift in Sources */,
 				C522FA1C22E3DF7800109B4B /* MockServer.swift in Sources */,
+				C522FA2C22E474C100109B4B /* MovieListTableViewControllerTest.swift in Sources */,
 				C522FA2622E4696E00109B4B /* MovieDetailViewControllerTest.swift in Sources */,
 				C522FA1722E3CC4C00109B4B /* MovieListTest.swift in Sources */,
 				C522FA2922E46A4C00109B4B /* Viewcontroller+Test.swift in Sources */,

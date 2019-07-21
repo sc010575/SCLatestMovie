@@ -45,6 +45,9 @@ class MovieDetailViewControllerTest: QuickSpec {
                 it("should have a valid like data") {
                     expect(viewControllerOnTest?.popularityLabel.text).to(equal("Like: 502👌"))
                 }
+                it("should have a valid movie type") {
+                    expect(viewControllerOnTest?.movieTypeLabel.text).to(equal("Universal"))
+                }
             }
         }
     }

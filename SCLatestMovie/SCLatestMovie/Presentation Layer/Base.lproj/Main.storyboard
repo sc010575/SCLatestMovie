@@ -90,14 +90,14 @@
             <objects>
                 <viewController storyboardIdentifier="MovieDetailViewController" id="jCc-Jf-sUz" customClass="MovieDetailViewController" customModule="SCLatestMovie" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="0ql-CQ-X2c">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iD5-E6-U5n">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="822"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CQk-9e-xQo" userLabel="Content View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="822"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie Poster" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="koE-sn-eH1">
                                                 <rect key="frame" x="142" y="20" width="130" height="26.5"/>
@@ -112,8 +112,15 @@
                                                     <constraint firstAttribute="height" constant="300" id="lIU-Xc-PSw"/>
                                                 </constraints>
                                             </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UPJ-B0-Jzo" userLabel="Divider">
+                                                <rect key="frame" x="0.0" y="376.5" width="414" height="1"/>
+                                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="cBH-pI-mxs"/>
+                                                </constraints>
+                                            </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="Wuo-iN-shF">
-                                                <rect key="frame" x="20" y="406.5" width="374" height="24"/>
+                                                <rect key="frame" x="20" y="381.5" width="374" height="24"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Movie Overview" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2vE-sF-uXB">
                                                         <rect key="frame" x="0.0" y="0.0" width="288" height="24"/>
@@ -124,30 +131,63 @@
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mee-Vb-I3b">
                                                         <rect key="frame" x="288" y="0.0" width="86" height="24"/>
                                                         <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
-                                                        <nil key="textColor"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pdJ-Jr-f7K">
-                                                <rect key="frame" x="40" y="440.5" width="354" height="107.5"/>
+                                                <rect key="frame" x="40" y="415.5" width="354" height="107.5"/>
                                                 <string key="text">A spinoff of The Fate of the Furious, focusing on Johnson's US Diplomatic Security Agent Luke Hobbs forming an unlikely alliance with Statham's Deckard Shaw.</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Ij-FQ-5P8" userLabel="Divider">
+                                                <rect key="frame" x="0.0" y="533" width="414" height="1"/>
+                                                <color key="backgroundColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="1" id="YyG-yV-y8F"/>
+                                                </constraints>
+                                            </view>
+                                            <stackView opaque="NO" contentMode="scaleToFill" spacing="59" translatesAutoresizingMaskIntoConstraints="NO" id="bAp-nG-6uo">
+                                                <rect key="frame" x="20" y="539" width="374" height="24"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Movie type" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="biY-eQ-8kD">
+                                                        <rect key="frame" x="0.0" y="0.0" width="101" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Universal" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WQR-B2-wsC">
+                                                        <rect key="frame" x="160" y="0.0" width="214" height="24"/>
+                                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstItem="koE-sn-eH1" firstAttribute="top" secondItem="CQk-9e-xQo" secondAttribute="top" constant="20" id="2Ef-iB-Koe"/>
                                             <constraint firstItem="BtI-eD-eqM" firstAttribute="centerX" secondItem="CQk-9e-xQo" secondAttribute="centerX" id="5Kk-4t-Fw3"/>
-                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="pdJ-Jr-f7K" secondAttribute="bottom" constant="20" id="DWQ-BP-lHm"/>
-                                            <constraint firstItem="Wuo-iN-shF" firstAttribute="top" secondItem="BtI-eD-eqM" secondAttribute="bottom" constant="40" id="L9B-xu-716"/>
+                                            <constraint firstItem="Wuo-iN-shF" firstAttribute="top" secondItem="UPJ-B0-Jzo" secondAttribute="bottom" constant="4" id="9T2-sM-0nA"/>
+                                            <constraint firstAttribute="trailing" secondItem="bAp-nG-6uo" secondAttribute="trailing" constant="20" id="BWK-3X-Hgk"/>
+                                            <constraint firstItem="UPJ-B0-Jzo" firstAttribute="top" secondItem="BtI-eD-eqM" secondAttribute="bottom" constant="10" id="IVj-um-4TV"/>
+                                            <constraint firstItem="bAp-nG-6uo" firstAttribute="top" secondItem="7Ij-FQ-5P8" secondAttribute="bottom" constant="5" id="JQt-1d-h66"/>
+                                            <constraint firstAttribute="trailing" secondItem="7Ij-FQ-5P8" secondAttribute="trailing" id="QIK-5l-Uax"/>
                                             <constraint firstItem="BtI-eD-eqM" firstAttribute="top" secondItem="koE-sn-eH1" secondAttribute="bottom" constant="20" id="QIU-z8-Dcp"/>
+                                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="bAp-nG-6uo" secondAttribute="bottom" constant="20" id="Rw8-dt-IBv"/>
                                             <constraint firstItem="Wuo-iN-shF" firstAttribute="leading" secondItem="CQk-9e-xQo" secondAttribute="leading" constant="20" id="Svv-m3-55p"/>
+                                            <constraint firstItem="UPJ-B0-Jzo" firstAttribute="leading" secondItem="CQk-9e-xQo" secondAttribute="leading" id="VKb-aT-tdz"/>
                                             <constraint firstItem="koE-sn-eH1" firstAttribute="centerX" secondItem="CQk-9e-xQo" secondAttribute="centerX" id="WuJ-XA-jYc"/>
+                                            <constraint firstItem="bAp-nG-6uo" firstAttribute="leading" secondItem="CQk-9e-xQo" secondAttribute="leading" constant="20" id="Za5-MY-uej"/>
+                                            <constraint firstItem="7Ij-FQ-5P8" firstAttribute="leading" secondItem="CQk-9e-xQo" secondAttribute="leading" id="ccF-8O-W4R"/>
                                             <constraint firstItem="pdJ-Jr-f7K" firstAttribute="leading" secondItem="CQk-9e-xQo" secondAttribute="leading" constant="40" id="gSD-8z-7La"/>
+                                            <constraint firstItem="7Ij-FQ-5P8" firstAttribute="top" secondItem="pdJ-Jr-f7K" secondAttribute="bottom" constant="10" id="hnj-vg-EPm"/>
                                             <constraint firstItem="pdJ-Jr-f7K" firstAttribute="top" secondItem="Wuo-iN-shF" secondAttribute="bottom" constant="10" id="jeX-vE-Nz0"/>
+                                            <constraint firstAttribute="trailing" secondItem="UPJ-B0-Jzo" secondAttribute="trailing" id="k83-Zk-VYz"/>
                                             <constraint firstAttribute="trailing" secondItem="Wuo-iN-shF" secondAttribute="trailing" constant="20" id="pKL-Tf-Vx7"/>
                                             <constraint firstAttribute="trailing" secondItem="pdJ-Jr-f7K" secondAttribute="trailing" constant="20" id="wlA-fF-aVS"/>
                                         </constraints>
@@ -172,7 +212,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="oJx-32-PKT"/>
                     </view>
+                    <size key="freeformSize" width="414" height="900"/>
                     <connections>
+                        <outlet property="movieTypeLabel" destination="WQR-B2-wsC" id="KnG-IT-9EZ"/>
                         <outlet property="overviewLabel" destination="pdJ-Jr-f7K" id="mW2-ni-m0R"/>
                         <outlet property="popularityLabel" destination="Mee-Vb-I3b" id="34i-Cq-1Jx"/>
                         <outlet property="posterImageView" destination="BtI-eD-eqM" id="g2E-sW-tOI"/>

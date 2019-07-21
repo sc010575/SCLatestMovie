@@ -33,6 +33,16 @@ class MovieListTest: QuickSpec {
                     expect(modelUnderTest).to(beNil())
                 }
             }
+            context("When user retrive and parse a proper response") {
+                it("Should show proper rating information") {
+                    let dataResult = Fixtures.getJSONData(jsonPath: "movilist")
+                    if let modelUnderTest: MovieList = ParseJson.parse(data: dataResult!) {
+                        let movie = modelUnderTest.results[0]
+                        let rating = movie.userVote(from: movie.voteAverage ?? 0.0)
+                        expect(rating).to(equal("Good Movie! ✋"))
+                    }
+                }
+            }
         }
     }
 }
