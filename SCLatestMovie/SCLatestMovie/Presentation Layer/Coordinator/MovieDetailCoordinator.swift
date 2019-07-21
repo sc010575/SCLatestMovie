@@ -21,11 +21,8 @@ class MovieDetailCoordinator: Coordinator {
     func start() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         if let vc = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController {
-            let viewModel = MovieDetailViewModel()
             guard let movie = movie else { return }
-            
-            viewModel.movie.value = movie
-            vc.viewModel = viewModel
+            vc.movie = movie
             presenter.pushViewController(vc, animated: true)
         }
     }
