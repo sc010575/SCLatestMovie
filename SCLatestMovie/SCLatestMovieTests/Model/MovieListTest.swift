@@ -54,6 +54,15 @@ class MovieListTest: QuickSpec {
                     }
                 }
             }
+            context("When user retrive and parse a proper response") {
+                it("Should be able to sort the array based on voting average") {
+                    let dataResult = Fixtures.getJSONData(jsonPath: "movilist")
+                    if let modelUnderTest: MovieList = ParseJson.parse(data: dataResult!) {
+                        let sortedLists = modelUnderTest.sortedResult()
+                        expect(sortedLists.results[0].userVote(from: sortedLists.results[0].voteAverage ?? 0.0)).to(equal("Good Movie! ✋"))
+                    }
+                }
+            }
         }
     }
 }

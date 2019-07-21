@@ -9,7 +9,16 @@
 import Foundation
 
 struct MovieList: Decodable {
-    let results: [Movie]
+    var results: [Movie]
+
+    func sortedResult() -> MovieList {
+        var movieList = MovieList(results: [])
+        let r = results.sorted { (m1, m2) -> Bool in
+            return Unicode.CanonicalCombiningClass(rawValue: UInt8(m1.voteAverage ?? 0.0)) > Unicode.CanonicalCombiningClass(rawValue: UInt8(m2.voteAverage ?? 0.0))
+        }
+        movieList.results = r
+        return movieList
+    }
 }
 
 struct Movie: Decodable {

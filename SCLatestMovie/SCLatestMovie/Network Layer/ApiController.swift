@@ -40,7 +40,8 @@ class ApiController: NSObject {
                     httpResponse.statusCode == 200, let data = data {
                     DispatchQueue.main.async {
                         if let movies: MovieList = ParseJson.parse(data: data) {
-                            onSuccess(movies)
+                            let sortedMovies = movies.sortedResult()
+                            onSuccess(sortedMovies)
                             return
                         }
                     }
