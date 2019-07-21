@@ -29,3 +29,7 @@ Latest Movie list and details about movies to watch
 ### Code Coverage
 Current code coverage is 84.2%
 
+### Features
+- After launching the application it will make an api call to retrive upcoming movie list
+- Movies will show in the assending order of the user voting average
+- Select any movies will show the details page where app will cover details like poster image, overview, popularity, movie type(adult/universal) and movie genres.
