@@ -8,7 +8,7 @@
 
 import Foundation
 
-//For simplicity consider  a static dictonary, Ideally it should be a API call
+//For simplicity consider  a static dictonary of geners, Ideally it should be a API call
 let genreDict = [28:"Action", 12:"Adventure", 16:"Animation", 35:"Comedy", 80:"Crime", 99:"Documentory", 18:"Drama", 10751:"Family", 14:"Fantasy", 36:"History", 27:"Horror", 10402:"Music", 9648:"Mystery", 10749:"Romance", 878:"Science Fiction", 10770:"TV Movie", 53:"Thriller", 10752:"War", 37:"Western"]
 
 enum Constant {
@@ -20,7 +20,7 @@ enum Constant {
     static let ImageURL = "https://image.tmdb.org/t/p/w500"
     static var baseURL: String {
         
-        if isUITest || isUnitTest {
+        if  isUnitTest {
             return "http://localhost:8088/3/movie"
         }
         
@@ -55,12 +55,4 @@ enum Constant {
     static var isUnderTest: Bool {
         return isUITest || isUnitTest ? true : false
     }
-    
-    static var isSimulator: Bool {
-        #if targetEnvironment(simulator)
-        return true
-        #else
-        return false
-        #endif
-    }
-}
+ }
