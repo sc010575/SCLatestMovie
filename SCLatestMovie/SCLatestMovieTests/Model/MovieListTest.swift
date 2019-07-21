@@ -43,6 +43,17 @@ class MovieListTest: QuickSpec {
                     }
                 }
             }
+            context("When user retrive and parse a proper response") {
+                it("Should show proper list of genres") {
+                    let dataResult = Fixtures.getJSONData(jsonPath: "movilist")
+                    if let modelUnderTest: MovieList = ParseJson.parse(data: dataResult!) {
+                        let movie = modelUnderTest.results[0]
+                        let genres = movie.genresList()
+                        let genreData = genres?.joined(separator: "-")
+                        expect(genreData).to(equal("Adventure-Animation-Family-Drama-Action"))
+                    }
+                }
+            }
         }
     }
 }

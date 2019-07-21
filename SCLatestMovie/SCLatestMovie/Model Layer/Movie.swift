@@ -13,7 +13,7 @@ struct MovieList: Decodable {
 }
 
 struct Movie: Decodable {
-    
+
     enum Rating: Double {
         typealias RawValue = Double
         case verygood
@@ -21,7 +21,7 @@ struct Movie: Decodable {
         case average
         case poor
         case noRating
-        
+
         static func getRange(_ votingAverage: Double) -> Rating {
             switch votingAverage {
             case 8 ..< 11: return .verygood
@@ -36,20 +36,22 @@ struct Movie: Decodable {
         }
     }
 
-    
+
     let title: String
     let overview: String
     let posterPath: String
     let voteAverage: Double?
     let popularity: Double?
-    let releaseDate : String?
+    let releaseDate: String?
     let adult: Bool
-    static let emptyMovie = Movie(title: "", overview: "", posterPath: "", voteAverage: 0.0, popularity: 0.0, releaseDate: "", adult: false)
-    
+    let genreIds: [Int]?
+
+    static let emptyMovie = Movie(title: "", overview: "", posterPath: "", voteAverage: 0.0, popularity: 0.0, releaseDate: "", adult: false, genreIds: [])
+
     func movieType() -> String {
         return adult ? "Adult" : "Universal"
     }
-    
+
     func userVote(from voteCount: Double) -> String {
         let userRating = Rating.getRange(voteCount)
         switch userRating {
@@ -66,4 +68,17 @@ struct Movie: Decodable {
         }
     }
 
+    func genresList() -> [String]? {
+
+        var result = [String]()
+        let genreIds = self.genreIds
+        let gd = genreDict
+        genreIds?.forEach({ id in
+            if gd.keys.contains(id) {
+                result.append(gd[id] ?? "")
+            }
+        })
+
+        return result
+    }
 }

@@ -48,6 +48,9 @@ class MovieDetailViewControllerTest: QuickSpec {
                 it("should have a valid movie type") {
                     expect(viewControllerOnTest?.movieTypeLabel.text).to(equal("Universal"))
                 }
+                it("should have a list of genres") {
+                    expect(viewControllerOnTest?.genresLabel.text).to(equal("Adventure, Animation, Family, Drama, Action"))
+                }
             }
         }
     }
