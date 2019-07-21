@@ -16,24 +16,29 @@ protocol MovieListViewModelCoordinatorDelegate: class
 
 protocol MovieListViewModelProtocol: class {
 
-    var apiController: ApiController { get set }
+    var apiController: ApiControllerProtocol { get set }
     var movies: Observer<[Movie]> { get set }
+    var state: Observer<State> {get set }
+
     var delegate: MovieListViewModelCoordinatorDelegate? { get set }
+    
     func fetchMovies()
+    func useItemAtIndex(_ index: Int)
+    func moviesCount() -> Int
 }
 
 enum State {
     case noResults, failure(error: Error), dataError(error: String), notReachable(error: String), success
 }
 
-class MovieListViewModel: MovieListViewModelProtocol {
+final class MovieListViewModel: MovieListViewModelProtocol {
 
-    var apiController: ApiController
+    var apiController: ApiControllerProtocol
     var movies: Observer<[Movie]> = Observer([])
     var state: Observer<State> = Observer(.noResults)
     weak var delegate: MovieListViewModelCoordinatorDelegate?
 
-    init(_ apiController: ApiController) {
+    init(_ apiController: ApiControllerProtocol = ApiController()) {
         self.apiController = apiController
     }
 

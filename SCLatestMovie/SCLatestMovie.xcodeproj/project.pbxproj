@@ -38,6 +38,9 @@
 		C522FA2622E4696E00109B4B /* MovieDetailViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2522E4696E00109B4B /* MovieDetailViewControllerTest.swift */; };
 		C522FA2922E46A4C00109B4B /* Viewcontroller+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2822E46A4C00109B4B /* Viewcontroller+Test.swift */; };
 		C522FA2C22E474C100109B4B /* MovieListTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */; };
+		C566279522E4D72200B99484 /* FakeMovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566279422E4D72200B99484 /* FakeMovieListViewModel.swift */; };
+		C566279722E4DAF200B99484 /* FakeApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566279622E4DAF200B99484 /* FakeApiController.swift */; };
+		C566279922E4DCD500B99484 /* DependencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566279822E4DCD500B99484 /* DependencyTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +94,9 @@
 		C522FA2522E4696E00109B4B /* MovieDetailViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewControllerTest.swift; sourceTree = "<group>"; };
 		C522FA2822E46A4C00109B4B /* Viewcontroller+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Viewcontroller+Test.swift"; sourceTree = "<group>"; };
 		C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewControllerTest.swift; sourceTree = "<group>"; };
+		C566279422E4D72200B99484 /* FakeMovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMovieListViewModel.swift; sourceTree = "<group>"; };
+		C566279622E4DAF200B99484 /* FakeApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApiController.swift; sourceTree = "<group>"; };
+		C566279822E4DCD500B99484 /* DependencyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyTest.swift; sourceTree = "<group>"; };
 		E47C164603324FD48FE270B5 /* Pods-SCLatestMovieTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCLatestMovieTests.release.xcconfig"; path = "Target Support Files/Pods-SCLatestMovieTests/Pods-SCLatestMovieTests.release.xcconfig"; sourceTree = "<group>"; };
 		F6B11042859EE8DB03B19845 /* Pods_SCLatestMovie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCLatestMovie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -161,13 +167,15 @@
 		C522F9CF22E2495100109B4B /* SCLatestMovieTests */ = {
 			isa = PBXGroup;
 			children = (
-				C522FA2A22E46D0900109B4B /* ViewController */,
+				C566279322E4D6E600B99484 /* Fake Objects */,
+				C566279222E4D6D600B99484 /* DependencyTest */,
 				C522FA2722E46A2B00109B4B /* Extension */,
+				C522FA2A22E46D0900109B4B /* ViewController */,
 				C522FA1F22E444FE00109B4B /* Network */,
 				C522FA1A22E3DF6300109B4B /* MockServer */,
+				C522FA0F22E3CA7D00109B4B /* Model */,
 				C522FA1322E3CB8B00109B4B /* Fixture */,
 				C522FA1022E3CAB800109B4B /* Json */,
-				C522FA0F22E3CA7D00109B4B /* Model */,
 				C522F9D222E2495100109B4B /* Info.plist */,
 			);
 			path = SCLatestMovieTests;
@@ -324,6 +332,23 @@
 				C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		C566279222E4D6D600B99484 /* DependencyTest */ = {
+			isa = PBXGroup;
+			children = (
+				C566279822E4DCD500B99484 /* DependencyTest.swift */,
+			);
+			path = DependencyTest;
+			sourceTree = "<group>";
+		};
+		C566279322E4D6E600B99484 /* Fake Objects */ = {
+			isa = PBXGroup;
+			children = (
+				C566279422E4D72200B99484 /* FakeMovieListViewModel.swift */,
+				C566279622E4DAF200B99484 /* FakeApiController.swift */,
+			);
+			path = "Fake Objects";
 			sourceTree = "<group>";
 		};
 		D732BA2FFBD4D49E6179B7E8 /* Pods */ = {
@@ -568,11 +593,14 @@
 			files = (
 				C522FA2122E4451300109B4B /* ApiControllerTest.swift in Sources */,
 				C522FA1C22E3DF7800109B4B /* MockServer.swift in Sources */,
+				C566279922E4DCD500B99484 /* DependencyTest.swift in Sources */,
 				C522FA2C22E474C100109B4B /* MovieListTableViewControllerTest.swift in Sources */,
 				C522FA2622E4696E00109B4B /* MovieDetailViewControllerTest.swift in Sources */,
 				C522FA1722E3CC4C00109B4B /* MovieListTest.swift in Sources */,
 				C522FA2922E46A4C00109B4B /* Viewcontroller+Test.swift in Sources */,
+				C566279522E4D72200B99484 /* FakeMovieListViewModel.swift in Sources */,
 				C522FA1522E3CBC900109B4B /* Fixture.swift in Sources */,
+				C566279722E4DAF200B99484 /* FakeApiController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

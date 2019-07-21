@@ -9,7 +9,7 @@
 import UIKit
 
 class MovieListTableViewController: UITableViewController {
-    var viewModel: MovieListViewModel!
+    var viewModel: MovieListViewModelProtocol!
 
     override func viewDidLoad() {
         super.viewDidLoad()

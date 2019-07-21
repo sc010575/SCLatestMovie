@@ -23,8 +23,7 @@ class MovieListCoordinator: Coordinator {
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
         guard let rootViewController = storyBoard.instantiateViewController(withIdentifier: "MovieListTableViewController") as? MovieListTableViewController else { return }
         rootViewController.title = "Loading..."
-        let apiController = ApiController()
-        let viewModel = MovieListViewModel(apiController)
+        let viewModel = MovieListViewModel()
         viewModel.delegate = self
         rootViewController.viewModel = viewModel
         presenter.pushViewController(rootViewController, animated: true)

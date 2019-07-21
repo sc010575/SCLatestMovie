@@ -8,12 +8,21 @@
 
 import Foundation
 
-class ApiController: NSObject {
+//MARK:- ApiControllerProtocol
 
+protocol ApiControllerProtocol {
     typealias Success = (MovieList) -> Void
     typealias Failure = ((Error) -> Void)?
     typealias NotReachable = ((String) -> Void)?
     typealias DataError = ((String) -> Void)?
+
+    func latestMovies(onSuccess: @escaping Success, onFailure: Failure, onNotReachable: NotReachable, onDataError: DataError)
+
+}
+
+//MARK:- Final class for ApiController
+
+final class ApiController: NSObject, ApiControllerProtocol {
 
     func latestMovies(onSuccess: @escaping Success, onFailure: Failure = nil, onNotReachable: NotReachable = nil, onDataError: DataError = nil) {
 
@@ -22,7 +31,7 @@ class ApiController: NSObject {
             onNotReachable("Not connected to the network")
             return
         }
-        
+
         guard let url = Constant.movieURL else { return }
         let urlRequest = URLRequest(url: url)
         let config = URLSessionConfiguration.default
