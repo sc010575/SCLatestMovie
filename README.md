@@ -6,7 +6,7 @@ Latest Movie list and details about movies to watch
 
 ### Development Platform
 - iOS 12.2 and XCode 10.2.1
-- Swift 4.2
+- Swift 5
 
 ### Swift libraries 
 - Quick.Nimble for BDD testing
