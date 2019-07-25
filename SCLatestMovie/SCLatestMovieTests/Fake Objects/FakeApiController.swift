@@ -14,7 +14,7 @@ class FakeApiController : ApiControllerProtocol {
     
     var spyLatestMoviesCalled = false
     
-    func latestMovies(onSuccess: @escaping FakeApiController.Success, onFailure: Failure, onNotReachable: FakeApiController.NotReachable, onDataError: FakeApiController.DataError) {
+    func latestMovies(_ sortBy: SortBy, onSuccess: @escaping FakeApiController.Success, onFailure: Failure) {
         spyLatestMoviesCalled = true
     }
     

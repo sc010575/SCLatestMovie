@@ -18,10 +18,10 @@ protocol MovieListViewModelProtocol: class {
 
     var apiController: ApiControllerProtocol { get set }
     var movies: Observer<[Movie]> { get set }
-    var state: Observer<State> {get set }
+    var state: Observer<State> { get set }
 
     var delegate: MovieListViewModelCoordinatorDelegate? { get set }
-    
+
     func fetchMovies()
     func useItemAtIndex(_ index: Int)
     func moviesCount() -> Int
@@ -31,7 +31,7 @@ enum State {
     case noResults, failure(error: Error), dataError(error: String), notReachable(error: String), success
 }
 
-final class MovieListViewModel: MovieListViewModelProtocol {
+final class MovieListViewModel: NSObject , MovieListViewModelProtocol {
 
     var apiController: ApiControllerProtocol
     var movies: Observer<[Movie]> = Observer([])
@@ -44,26 +44,34 @@ final class MovieListViewModel: MovieListViewModelProtocol {
 
     //MARK:- Public methods
     func fetchMovies() {
-        apiController.latestMovies(onSuccess: { (movieList) in
+        //Test reachability first 
+        guard currentReachabilityStatus != .notReachable else {
+           return  self.state.value = .notReachable(error: "Not connected to the network")
+        }
+
+        
+        apiController.latestMovies(.date, onSuccess: { (movieList) in
             self.movies.value = movieList.results
-        }, onFailure: { (error) in
-                self.state.value = .failure(error: error)
-            }, onNotReachable: { (result) in
-                self.state.value = .notReachable(error: result)
-            }) { (dataError) in
-            self.state.value = .dataError(error: dataError)
+        }, onFailure: { (apiError) in
+                switch apiError {
+                case .dataError(let errorMessage):
+                    self.state.value = .dataError(error: errorMessage)
+                case .networkError(let error):
+                    self.state.value = .failure(error: error)
+
+                }
+            })
+        }
+
+        func moviesCount() -> Int {
+            return movies.value.count
+        }
+
+        func useItemAtIndex(_ index: Int)
+        {
+            if let delegate = delegate {
+                let movie = movies.value[index]
+                delegate.MovieListViewModelDidSelect(self, data: movie)
+            }
         }
     }
-
-    func moviesCount() -> Int {
-        return movies.value.count
-    }
-
-    func useItemAtIndex(_ index: Int)
-    {
-        if let delegate = delegate {
-            let movie = movies.value[index]
-            delegate.MovieListViewModelDidSelect(self, data: movie)
-        }
-    }
-}

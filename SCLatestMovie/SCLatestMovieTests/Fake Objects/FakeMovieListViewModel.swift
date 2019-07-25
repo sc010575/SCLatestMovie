@@ -28,8 +28,8 @@ class FakeMovieListViewModel: MovieListViewModelProtocol {
 
     func fetchMovies() {
         spyFetchMoviesCalled = true
-        let movie1 = Movie(title: "A title", overview: "A Overview", posterPath: "A PosterPath", voteAverage: 6, popularity: 234, releaseDate: "20/01/2019", adult: false, genreIds: [12,16])
-        let movie2 = Movie(title: "A new title", overview: "A new Overview", posterPath: "A new PosterPath", voteAverage: 2, popularity: 23, releaseDate: "30/11/2019", adult: true, genreIds: [18,28])
+        let movie1 = Movie(title: "A title", overview: "A Overview", posterPath: "A PosterPath", voteAverage: 6, popularity: 234, releaseDate: "20/01/2019", adult: false, genreIds: [12,16], date: Date())
+        let movie2 = Movie(title: "A new title", overview: "A new Overview", posterPath: "A new PosterPath", voteAverage: 2, popularity: 23, releaseDate: "30/11/2019", adult: true, genreIds: [18,28], date: nil)
         let movieList = MovieList(results: [movie1, movie2])
         movies.value = movieList.results
     }

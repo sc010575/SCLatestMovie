@@ -10,13 +10,21 @@ import Foundation
 
 //MARK:- ApiControllerProtocol
 
+enum ApiError {
+    case dataError (errorMessage: String)
+    case networkError (error: Error)
+}
+
+enum SortBy {
+    case date
+    case userVote
+}
+
 protocol ApiControllerProtocol {
     typealias Success = (MovieList) -> Void
-    typealias Failure = ((Error) -> Void)?
-    typealias NotReachable = ((String) -> Void)?
-    typealias DataError = ((String) -> Void)?
+    typealias Failure = ((ApiError) -> Void)?
 
-    func latestMovies(onSuccess: @escaping Success, onFailure: Failure, onNotReachable: NotReachable, onDataError: DataError)
+    func latestMovies(_ sortBy: SortBy,onSuccess: @escaping Success, onFailure: Failure)
 
 }
 
@@ -24,13 +32,8 @@ protocol ApiControllerProtocol {
 
 final class ApiController: NSObject, ApiControllerProtocol {
 
-    func latestMovies(onSuccess: @escaping Success, onFailure: Failure = nil, onNotReachable: NotReachable = nil, onDataError: DataError = nil) {
+    func latestMovies(_ sortBy: SortBy, onSuccess: @escaping Success, onFailure: Failure) {
 
-        guard currentReachabilityStatus != .notReachable else {
-            guard let onNotReachable = onNotReachable else { return }
-            onNotReachable("Not connected to the network")
-            return
-        }
 
         guard let url = Constant.movieURL else { return }
         let urlRequest = URLRequest(url: url)
@@ -41,7 +44,7 @@ final class ApiController: NSObject, ApiControllerProtocol {
             if error != nil, let error = error {
                 DispatchQueue.main.async {
                     guard let onFailure = onFailure else { return }
-                    onFailure(error)
+                    onFailure(.networkError(error: error))
                 }
                 return
             } else {
@@ -49,16 +52,20 @@ final class ApiController: NSObject, ApiControllerProtocol {
                     httpResponse.statusCode == 200, let data = data {
                     DispatchQueue.main.async {
                         if let movies: MovieList = ParseJson.parse(data: data) {
-                         //   let sortedMovies = movies.sortedResult()
-                            let sortMovies = movies.sortByDate()
-                            onSuccess(sortMovies)
+                            var sortedMovies =  MovieList(results: [])
+                            if sortBy == .userVote {
+                                sortedMovies = movies.sortedResult()
+                            } else {
+                                sortedMovies = movies.sortByDate()
+                            }
+                            onSuccess(sortedMovies)
                             return
                         }
                     }
                 } else {
                     DispatchQueue.main.async {
-                        guard let onDataError = onDataError else { return }
-                        onDataError("Data error")
+                        guard let onFailure = onFailure else { return }
+                        onFailure(.dataError(errorMessage: "Data error"))
                         return
                     }
                 }
