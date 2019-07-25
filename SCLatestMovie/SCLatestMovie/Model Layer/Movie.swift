@@ -19,6 +19,26 @@ struct MovieList: Decodable {
         movieList.results = r
         return movieList
     }
+    func sortByDate() -> MovieList {
+        var movieList = MovieList(results: [])
+
+        results.forEach { (movie) in
+            var m = movie
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd"
+            if let releaseDate = m.releaseDate {
+                let date = dateFormatter.date(from: releaseDate)
+                m.date = date
+                movieList.results.append(m)
+            }
+
+        }
+
+        movieList.results = movieList.results.sorted (by: {
+            return $0.date?.compare($1.date ?? Date()) == .orderedDescending
+        })
+        return movieList
+    }
 }
 
 struct Movie: Decodable {
@@ -51,11 +71,12 @@ struct Movie: Decodable {
     let posterPath: String
     let voteAverage: Double?
     let popularity: Double?
-    let releaseDate: String?
+    var releaseDate: String?
     let adult: Bool
     let genreIds: [Int]?
+    var date: Date?
 
-    static let emptyMovie = Movie(title: "", overview: "", posterPath: "", voteAverage: 0.0, popularity: 0.0, releaseDate: "", adult: false, genreIds: [])
+    static let emptyMovie = Movie(title: "", overview: "", posterPath: "", voteAverage: 0.0, popularity: 0.0, releaseDate: "", adult: false, genreIds: [], date: Date())
 
     func movieType() -> String {
         return adult ? "Adult" : "Universal"
