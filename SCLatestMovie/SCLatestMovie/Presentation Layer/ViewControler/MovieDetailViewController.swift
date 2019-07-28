@@ -19,19 +19,23 @@ class MovieDetailViewController: UIViewController {
     @IBOutlet weak var popularityLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
 
+    var viewModel:MovieDetailViewModel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 
     fileprivate func setupView() {
-        overviewLabel .text = movie.overview
-        title = movie.title
-        popularityLabel.text = "Like: \(Int(movie.popularity ?? 0))👌"
-        movieTypeLabel.text = movie.movieType()
-        let genresText = movie.genresList()?.joined(separator: ", ")
-        genresLabel.text = genresText
-        guard let url = URL(string: Constant.ImageURL + movie.posterPath) else { return }
-        posterImageView.sd_setImage(with: url, completed: nil)
+        
+        viewModel.movieDetail.bind { [weak self] (vmData) in
+            self?.overviewLabel.text = vmData.overview
+            self?.title = vmData.title
+            self?.popularityLabel.text = "Like: \(vmData.movieType)👌"
+            self?.movieTypeLabel.text = vmData.movieType
+            self?.genresLabel.text = vmData.genre
+            guard let url = URL(string: Constant.ImageURL + vmData.posterPath) else { return }
+            self?.posterImageView.sd_setImage(with: url, completed: nil)
+        }
     }
 }
