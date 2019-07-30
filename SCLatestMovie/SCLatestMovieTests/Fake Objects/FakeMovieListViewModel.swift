@@ -15,7 +15,7 @@ class FakeMovieListViewModel: MovieListViewModelProtocol {
     
     
     var apiController: ApiControllerProtocol
-    var movies: Observer<[Movie]> = Observer([])
+    var movies: Observer<[Any]> = Observer([])
     var delegate: MovieListViewModelCoordinatorDelegate?
     var spyFetchMoviesCalled:Bool = false
     var spyUseItemAtIndexCalled = false

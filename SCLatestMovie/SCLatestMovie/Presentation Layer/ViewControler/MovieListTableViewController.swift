@@ -14,9 +14,8 @@ class MovieListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        let movieViewModel = viewModel as? MovieListViewModel
-        movieViewModel?.fetchMovies()
-        movieViewModel?.movies.bind { _ in
+        viewModel.fetchMovies()
+        viewModel.movies.bind { _ in
             self.title = "Latest movies"
             self.tableView.reloadData()
         }
@@ -48,31 +47,30 @@ class MovieListTableViewController: UITableViewController {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MovieListTableViewCell.reuseIdentifier, for: indexPath) as? MovieListTableViewCell else {
             return UITableViewCell()
         }
-        let movieViewModel = viewModel as? MovieListViewModel
 
-        if let movie = movieViewModel?.movies.value[indexPath.row] {
+        if let movie = viewModel.movies.value[indexPath.row] as? MovieListViewModel.VMData {
             let rating = movie.userVote
             cell.configureCell(movie.title, rating: rating, releaseDate: movie.releaseDate, imageUrl: movie.posterPath)
         }
         return cell
-        }
-
-        override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            viewModel.useItemAtIndex(indexPath.row)
-        }
-
-        //MARK:- Error message
-
-        func errorWithMessage(message: String) {
-
-            let alert = UIAlertController(title: "Service Error", message: message, preferredStyle: .alert)
-            let retry = UIAlertAction(title: "Retry", style: .default, handler: { (alert: UIAlertAction!) in
-                self.viewModel.fetchMovies()
-            }
-            )
-            alert.addAction(retry)
-            self.present(alert, animated: true, completion: nil)
-
-        }
     }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.useItemAtIndex(indexPath.row)
+    }
+
+    //MARK:- Error message
+
+    func errorWithMessage(message: String) {
+
+        let alert = UIAlertController(title: "Service Error", message: message, preferredStyle: .alert)
+        let retry = UIAlertAction(title: "Retry", style: .default, handler: { (alert: UIAlertAction!) in
+            self.viewModel.fetchMovies()
+        }
+        )
+        alert.addAction(retry)
+        self.present(alert, animated: true, completion: nil)
+
+    }
+}
 

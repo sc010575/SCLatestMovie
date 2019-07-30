@@ -18,7 +18,7 @@ protocol MovieListViewModelCoordinatorDelegate: class
 protocol MovieListViewModelProtocol: class {
     var apiController: ApiControllerProtocol { get set }
     var state: Observer<State> { get set }
-
+    var movies: Observer<[Any]> {get set}
     var delegate: MovieListViewModelCoordinatorDelegate? { get set }
 
     func fetchMovies()
@@ -32,7 +32,7 @@ enum State {
 
 final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
 
-    struct vmData {
+    struct VMData {
         let title: String
         let userVote: String
         let posterPath: String
@@ -40,7 +40,7 @@ final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
     }
 
     var apiController: ApiControllerProtocol
-    var movies: Observer<[vmData]> = Observer([])
+    var movies: Observer<[Any]> = Observer([])
     var state: Observer<State> = Observer(.noResults)
     weak var delegate: MovieListViewModelCoordinatorDelegate?
 
@@ -84,7 +84,7 @@ private extension MovieListViewModel {
 
     func prepareViewModelData(_ movieList: MovieList) {
         movieList.saveMovieList()
-        movies.value = movieList.results.map { vmData(title: $0.title, userVote: $0.userVote(from: $0.voteAverage ?? 0), posterPath: $0.posterPath, releaseDate: $0.releaseDate ?? "")
+        movies.value = movieList.results.map { VMData(title: $0.title, userVote: $0.userVote(from: $0.voteAverage ?? 0), posterPath: $0.posterPath, releaseDate: $0.releaseDate ?? "")
 
         }
     }

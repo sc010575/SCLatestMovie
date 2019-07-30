@@ -25,7 +25,8 @@ class MovieDetailViewControllerTest: QuickSpec {
                     viewControllerOnTest = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController
                     let movie = movieList.results[0]
 
-                    viewControllerOnTest?.movie = movie
+                    let viewModel = MovieDetailViewModel(0)
+                    viewModel.movieDetail = MovieDetailViewModel.VMData(title: movie.title, posterPath: movie.posterPath, overview: <#T##String#>, like: <#T##String#>, genre: <#T##String#>, movieType: <#T##String#>)
                     viewControllerOnTest?.preloadView()
                     let (_, tearDown) = (viewControllerOnTest?.appearInWindowTearDown())!
                     do { tearDown() }

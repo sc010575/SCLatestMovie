@@ -8,30 +8,39 @@
 
 import Foundation
 
-class MovieDetailViewModel {
+protocol MovieDetailViewModelProtocol: class {
+    typealias VMData = (title: String, posterPath: String, overview: String, like: String, genre: String, movieType: String)
+    var index: Int { get set }
+    func loadMovie() -> VMData
+}
 
-    struct vmData {
-        let title:String
-        let posterPath: String
-        let overview: String
-        let like: Int
-        let genre: String
-        let movieType: String
+extension MovieDetailViewModelProtocol {
+    func returnEmptyData() -> VMData {
+        let vmData:VMData = (title: "", posterPath: "", overview: "", like: "", genre: "", movieType: "")
+        return vmData
+    }
+}
+
+final class MovieDetailViewModel: MovieDetailViewModelProtocol {
+
+    var index: Int
+
+    init(_ index: Int) {
+        self.index = index
     }
 
-    var movieDetail: Observer<vmData> = Observer(vmData(title:"", posterPath: "", overview: "", like: 0, genre: "", movieType: ""))
-
-    init(_ index:Int) {
-        self.loadMovie(with: index)
-    }
-    
-    func loadMovie(with index:Int) {
+    func loadMovie() -> VMData {
         var movieList = MovieList(results: [])
         movieList = movieList.loadMovieList()
         let movie = movieList.results[index]
-
-        movieDetail.value = vmData(title:movie.title, posterPath: movie.posterPath, overview: movie.overview, like: Int(movie.popularity ?? 0), genre: movie.genresList()?.joined(separator: ", ") ?? "", movieType: movie.movieType())
-
+        var vmData: VMData = returnEmptyData()
+        vmData.title = movie.title
+        vmData.posterPath = movie.posterPath
+        vmData.overview = movie.overview
+        vmData.like = "Like: \(Int(movie.popularity ?? 0))👌"
+        vmData.genre = movie.genresList()?.joined(separator: ", ") ?? ""
+        vmData.movieType = movie.movieType()
+        return vmData
     }
 
 }
