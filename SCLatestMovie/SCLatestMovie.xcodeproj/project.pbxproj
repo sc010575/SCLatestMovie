@@ -10,6 +10,7 @@
 		0C7C0C8424DA16D39DA0E10D /* Pods_SCLatestMovieTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9D47CF9855F2BFEEA1C831AA /* Pods_SCLatestMovieTests.framework */; };
 		533C5A919C48C73678941A06 /* Pods_SCLatestMovie.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B11042859EE8DB03B19845 /* Pods_SCLatestMovie.framework */; };
 		C5216A8C22F014EE002C1452 /* FakeMovieDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5216A8B22F014EE002C1452 /* FakeMovieDetailViewModel.swift */; };
+		C5216A8E22F04965002C1452 /* StorageManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5216A8D22F04965002C1452 /* StorageManagerTest.swift */; };
 		C522F9BC22E2494F00109B4B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9BB22E2494F00109B4B /* AppDelegate.swift */; };
 		C522F9BE22E2495000109B4B /* MovieListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522F9BD22E2495000109B4B /* MovieListTableViewController.swift */; };
 		C522F9C122E2495000109B4B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C522F9BF22E2495000109B4B /* Main.storyboard */; };
@@ -64,6 +65,7 @@
 		9D47CF9855F2BFEEA1C831AA /* Pods_SCLatestMovieTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SCLatestMovieTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0EE5A817147F63AAD8B42A3 /* Pods-SCLatestMovie.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SCLatestMovie.release.xcconfig"; path = "Target Support Files/Pods-SCLatestMovie/Pods-SCLatestMovie.release.xcconfig"; sourceTree = "<group>"; };
 		C5216A8B22F014EE002C1452 /* FakeMovieDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMovieDetailViewModel.swift; sourceTree = "<group>"; };
+		C5216A8D22F04965002C1452 /* StorageManagerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManagerTest.swift; sourceTree = "<group>"; };
 		C522F9B822E2494F00109B4B /* SCLatestMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SCLatestMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C522F9BB22E2494F00109B4B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C522F9BD22E2495000109B4B /* MovieListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewController.swift; sourceTree = "<group>"; };
@@ -182,6 +184,7 @@
 				C522FA1322E3CB8B00109B4B /* Fixture */,
 				C522FA1022E3CAB800109B4B /* Json */,
 				C522F9D222E2495100109B4B /* Info.plist */,
+				C5216A8D22F04965002C1452 /* StorageManagerTest.swift */,
 			);
 			path = SCLatestMovieTests;
 			sourceTree = "<group>";
@@ -609,6 +612,7 @@
 				C522FA2122E4451300109B4B /* ApiControllerTest.swift in Sources */,
 				C522FA1C22E3DF7800109B4B /* MockServer.swift in Sources */,
 				C566279922E4DCD500B99484 /* DependencyTest.swift in Sources */,
+				C5216A8E22F04965002C1452 /* StorageManagerTest.swift in Sources */,
 				C5216A8C22F014EE002C1452 /* FakeMovieDetailViewModel.swift in Sources */,
 				C522FA2C22E474C100109B4B /* MovieListTableViewControllerTest.swift in Sources */,
 				C522FA2622E4696E00109B4B /* MovieDetailViewControllerTest.swift in Sources */,
