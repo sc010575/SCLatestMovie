@@ -15,7 +15,7 @@ protocol MovieDetailViewModelProtocol: class {
 }
 
 extension MovieDetailViewModelProtocol {
-    func returnEmptyData() -> VMData {
+    func emptyVMData() -> VMData {
         let vmData:VMData = (title: "", posterPath: "", overview: "", like: "", genre: "", movieType: "")
         return vmData
     }
@@ -33,7 +33,7 @@ final class MovieDetailViewModel: MovieDetailViewModelProtocol {
         var movieList = MovieList(results: [])
         movieList = movieList.loadMovieList()
         let movie = movieList.results[index]
-        var vmData: VMData = returnEmptyData()
+        var vmData: VMData = emptyVMData()
         vmData.title = movie.title
         vmData.posterPath = movie.posterPath
         vmData.overview = movie.overview

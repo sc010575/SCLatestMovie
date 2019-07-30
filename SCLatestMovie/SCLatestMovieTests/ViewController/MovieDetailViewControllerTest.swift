@@ -25,8 +25,8 @@ class MovieDetailViewControllerTest: QuickSpec {
                     viewControllerOnTest = storyboard.instantiateViewController(withIdentifier: "MovieDetailViewController") as? MovieDetailViewController
                     let movie = movieList.results[0]
 
-                    let viewModel = MovieDetailViewModel(0)
-                    viewModel.movieDetail = MovieDetailViewModel.VMData(title: movie.title, posterPath: movie.posterPath, overview: <#T##String#>, like: <#T##String#>, genre: <#T##String#>, movieType: <#T##String#>)
+                    let viewModel = FakeMovieDetailViewModel()
+                    viewControllerOnTest?.viewModel = viewModel
                     viewControllerOnTest?.preloadView()
                     let (_, tearDown) = (viewControllerOnTest?.appearInWindowTearDown())!
                     do { tearDown() }
@@ -34,20 +34,17 @@ class MovieDetailViewControllerTest: QuickSpec {
                 }
 
                 it("should populate the title properly") {
-                    expect(viewControllerOnTest?.title).to(equal("The Lion King"))
+                    expect(viewControllerOnTest?.title).to(equal("A Title"))
                 }
 
-                it("should have a valid poster url") {
-                    expect(viewControllerOnTest?.movie.posterPath).to(equal("/dzBtMocZuJbjLOXvrl4zGYigDzh.jpg"))
-                }
                 it("should have a vilid overview") {
-                    expect(viewControllerOnTest?.overviewLabel.text).to(equal("Overview One"))
+                    expect(viewControllerOnTest?.overviewLabel.text).to(equal("A overview"))
                 }
                 it("should have a valid like data") {
-                    expect(viewControllerOnTest?.popularityLabel.text).to(equal("Like: 502👌"))
+                    expect(viewControllerOnTest?.popularityLabel.text).to(equal("Like: 290👌"))
                 }
                 it("should have a valid movie type") {
-                    expect(viewControllerOnTest?.movieTypeLabel.text).to(equal("Universal"))
+                    expect(viewControllerOnTest?.movieTypeLabel.text).to(equal("Adult"))
                 }
                 it("should have a list of genres") {
                     expect(viewControllerOnTest?.genresLabel.text).to(equal("Adventure, Animation, Family, Drama, Action"))

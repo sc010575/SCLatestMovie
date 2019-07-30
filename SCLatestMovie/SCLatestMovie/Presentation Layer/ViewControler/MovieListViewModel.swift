@@ -10,15 +10,17 @@ import Foundation
 
 protocol MovieListViewModelCoordinatorDelegate: class
 {
-    func MovieListViewModelDidSelect(_ viewModel: MovieListViewModel, on index:Int)
+    func MovieListViewModelDidSelect(_ viewModel: MovieListViewModel, on index: Int)
 }
 
 
 
 protocol MovieListViewModelProtocol: class {
+    typealias VMDataItem = (title: String, userVote: String, posterPath: String, releaseDate: String)
+
     var apiController: ApiControllerProtocol { get set }
     var state: Observer<State> { get set }
-    var movies: Observer<[Any]> {get set}
+    var movies: Observer<[VMDataItem]> { get set }
     var delegate: MovieListViewModelCoordinatorDelegate? { get set }
 
     func fetchMovies()
@@ -26,21 +28,19 @@ protocol MovieListViewModelProtocol: class {
     func moviesCount() -> Int
 }
 
+extension MovieListViewModelProtocol {
+    func emptyVMData() -> VMDataItem {
+        return (title: "", userVote: "", posterPath: "", releaseDate: "")
+    }
+}
+
 enum State {
     case noResults, failure(error: Error), dataError(error: String), notReachable(error: String), success
 }
 
 final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
-
-    struct VMData {
-        let title: String
-        let userVote: String
-        let posterPath: String
-        let releaseDate: String
-    }
-
     var apiController: ApiControllerProtocol
-    var movies: Observer<[Any]> = Observer([])
+    var movies: Observer<[VMDataItem]> = Observer([])
     var state: Observer<State> = Observer(.noResults)
     weak var delegate: MovieListViewModelCoordinatorDelegate?
 
@@ -75,7 +75,7 @@ final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
     func useItemAtIndex(_ index: Int)
     {
         if let delegate = delegate {
-            delegate.MovieListViewModelDidSelect(self, on:index)
+            delegate.MovieListViewModelDidSelect(self, on: index)
         }
     }
 }
@@ -84,8 +84,17 @@ private extension MovieListViewModel {
 
     func prepareViewModelData(_ movieList: MovieList) {
         movieList.saveMovieList()
-        movies.value = movieList.results.map { VMData(title: $0.title, userVote: $0.userVote(from: $0.voteAverage ?? 0), posterPath: $0.posterPath, releaseDate: $0.releaseDate ?? "")
-
+        movies.value = movieList.results.map {
+            return resultItem(for: $0)
         }
+    }
+    
+    func resultItem(for movie:Movie) -> VMDataItem {
+        var vmData = emptyVMData()
+        vmData.title = movie.title
+        vmData.posterPath = movie.posterPath
+        vmData.releaseDate = movie.releaseDate ?? ""
+        vmData.userVote = movie.userVote(from: movie.voteAverage ?? 0)
+        return  vmData
     }
 }

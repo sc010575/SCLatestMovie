@@ -48,10 +48,9 @@ class MovieListTableViewController: UITableViewController {
             return UITableViewCell()
         }
 
-        if let movie = viewModel.movies.value[indexPath.row] as? MovieListViewModel.VMData {
-            let rating = movie.userVote
-            cell.configureCell(movie.title, rating: rating, releaseDate: movie.releaseDate, imageUrl: movie.posterPath)
-        }
+        let movie = viewModel.movies.value[indexPath.row]
+        let rating = movie.userVote
+        cell.configureCell(movie.title, rating: rating, releaseDate: movie.releaseDate, imageUrl: movie.posterPath)
         return cell
     }
 
