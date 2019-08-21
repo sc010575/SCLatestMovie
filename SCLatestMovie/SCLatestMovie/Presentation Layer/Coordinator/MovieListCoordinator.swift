@@ -23,6 +23,8 @@ class MovieListCoordinator: Coordinator {
         rootViewController.title = "Loading..."
         let viewModel = MovieListViewModel()
         viewModel.delegate = self
+        let dataSource = MovieListDataSource(viewModel)
+        rootViewController.dataSource = dataSource
         rootViewController.viewModel = viewModel
         presenter.pushViewController(rootViewController, animated: true)
     }

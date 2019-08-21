@@ -9,32 +9,53 @@
 import UIKit
 import SDWebImage
 
-class MovieListTableViewCell: UITableViewCell {
+
+protocol ItemViewModel {
+
+}
+struct MovieListCellViewModel: ItemViewModel {
+    let title: String
+    let rating: String
+    let posterPath: String
+    let releaseDate: String
+
+    init(movie: Movie) {
+        title = movie.title
+        posterPath = movie.posterPath
+        releaseDate = movie.releaseDate ?? "Release date not specified"
+        rating = "Rating: \(movie.userVote(from: movie.voteAverage ?? 0))"
+    }
+}
+
+protocol CellConfigurable {
+    static var cellIdentifire: String { get }
+    func configureCell(_ viewModel:ItemViewModel)
+}
+
+class MovieListTableViewCell: UITableViewCell,CellConfigurable {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var voteCountLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var releaseDateLabel: UILabel!
 
-    //MARK:- Static function
-    static var reuseIdentifier: String {
-        return String(describing: self)
-    }
-
+    
     //MARK:- Configure cell
     override func awakeFromNib() {
         super.awakeFromNib()
     }
+    
+    static var cellIdentifire: String {
+        return String(describing: self)
+    }
 
-    func configureCell(_ title: String, rating: String, releaseDate: String?, imageUrl: String?) {
-        titleLabel.text = title
-        voteCountLabel.text = "Rating: \(rating)"
-        if let releaseDate = releaseDate {
-            releaseDateLabel.text = releaseDate
-        } else {
-            releaseDateLabel.text = "Release date not specified"
-        }
-        guard let url = URL(string: Constant.ImageURL + (imageUrl ?? "")) else { return }
+    func configureCell(_ viewModel:ItemViewModel) {
+        let viewModel = viewModel as? MovieListCellViewModel
+        titleLabel.text = viewModel?.title
+        voteCountLabel.text = viewModel?.rating
+        releaseDateLabel.text = viewModel?.releaseDate
+
+        guard let url = URL(string: Constant.ImageURL + (viewModel?.posterPath ?? "")) else { return }
         iconImageView.sd_setImage(with: url, completed: nil)
     }
 }

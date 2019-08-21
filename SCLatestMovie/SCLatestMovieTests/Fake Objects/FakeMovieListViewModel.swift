@@ -11,12 +11,18 @@ import Foundation
 @testable import SCLatestMovie
 
 class FakeMovieListViewModel: MovieListViewModelProtocol {
+    
+    func movieAtIndex(_ index: Int) -> MovieListCellViewModel {
+        return movies[index]
+    }
+    
     var state: Observer<State> = Observer(.noResults)
     
     
     var apiController: ApiControllerProtocol
-    var movies: Observer<[VMDataItem]> = Observer([])
+    var movies = [MovieListCellViewModel]()
     var delegate: MovieListViewModelCoordinatorDelegate?
+    
     var spyFetchMoviesCalled:Bool = false
     var spyUseItemAtIndexCalled = false
     var spyMoviesCountCalled = false
@@ -28,15 +34,18 @@ class FakeMovieListViewModel: MovieListViewModelProtocol {
 
     func fetchMovies() {
         spyFetchMoviesCalled = true
-        let movie1 = (title: "A title", userVote: "20", posterPath: "A PosterPath", releaseDate: "20/01/2019")
-        let movie2 = (title: "A new title", userVote: "40", posterPath: "A new PosterPath", releaseDate: "30/11/2019")
-        let movieList = [movie1, movie2]
-        movies.value = movieList
+        let movie1 = Movie(title: "A title", overview: "A Overview", posterPath: "A path", voteAverage: 90, popularity: 100, releaseDate: "20/01/2019", adult: false, genreIds: [], date: nil)
+        
+        let movie2 = Movie(title: "A title 2", overview: "A Overview 2", posterPath: "A path 2", voteAverage: 70, popularity: 100, releaseDate: "20/09/2019", adult: true, genreIds: [], date: nil)
+        
+        let movieList:MovieList = MovieList(results: [movie1, movie2])
+        movies = movieList.results.map {
+            return resultItem(for: $0)
+        }
     }
     
     func useItemAtIndex(_ index: Int) {
         spyUseItemAtIndexCalled = true
-        
     }
     
     func moviesCount() -> Int {

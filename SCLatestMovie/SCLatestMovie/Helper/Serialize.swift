@@ -15,11 +15,11 @@ protocol Serialize {
 
 final class ParseJson<T:Decodable>: Serialize {
     typealias model = T
-    class func parse(data: Data) -> T? {
+    class func parse(data: Data) -> model? {
         do {
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
-            let result = try decoder.decode(T.self, from: data)
+            let result = try decoder.decode(model.self, from: data)
             return result
         } catch {
             print("JSON Error: \(error)")

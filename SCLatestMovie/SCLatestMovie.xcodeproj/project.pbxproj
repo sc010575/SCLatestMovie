@@ -39,6 +39,7 @@
 		C522FA2622E4696E00109B4B /* MovieDetailViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2522E4696E00109B4B /* MovieDetailViewControllerTest.swift */; };
 		C522FA2922E46A4C00109B4B /* Viewcontroller+Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2822E46A4C00109B4B /* Viewcontroller+Test.swift */; };
 		C522FA2C22E474C100109B4B /* MovieListTableViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */; };
+		C560A04C22F922F300146965 /* MovieListDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = C560A04B22F922F300146965 /* MovieListDataSource.swift */; };
 		C566279522E4D72200B99484 /* FakeMovieListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566279422E4D72200B99484 /* FakeMovieListViewModel.swift */; };
 		C566279722E4DAF200B99484 /* FakeApiController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566279622E4DAF200B99484 /* FakeApiController.swift */; };
 		C566279922E4DCD500B99484 /* DependencyTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C566279822E4DCD500B99484 /* DependencyTest.swift */; };
@@ -98,6 +99,7 @@
 		C522FA2522E4696E00109B4B /* MovieDetailViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewControllerTest.swift; sourceTree = "<group>"; };
 		C522FA2822E46A4C00109B4B /* Viewcontroller+Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Viewcontroller+Test.swift"; sourceTree = "<group>"; };
 		C522FA2B22E474C100109B4B /* MovieListTableViewControllerTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListTableViewControllerTest.swift; sourceTree = "<group>"; };
+		C560A04B22F922F300146965 /* MovieListDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListDataSource.swift; sourceTree = "<group>"; };
 		C566279422E4D72200B99484 /* FakeMovieListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeMovieListViewModel.swift; sourceTree = "<group>"; };
 		C566279622E4DAF200B99484 /* FakeApiController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeApiController.swift; sourceTree = "<group>"; };
 		C566279822E4DCD500B99484 /* DependencyTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyTest.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 				C522F9BD22E2495000109B4B /* MovieListTableViewController.swift */,
 				C522FA0322E2E52600109B4B /* MovieListViewModel.swift */,
 				C522FA0522E2EE8300109B4B /* MovieListTableViewCell.swift */,
+				C560A04B22F922F300146965 /* MovieListDataSource.swift */,
 			);
 			name = MovieList;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				C522FA0222E2E40500109B4B /* MovieListCoordinator.swift in Sources */,
 				C522FA0A22E3012400109B4B /* MovieDetailViewController.swift in Sources */,
 				C522F9F122E24F8100109B4B /* Coordinator.swift in Sources */,
+				C560A04C22F922F300146965 /* MovieListDataSource.swift in Sources */,
 				C522FA0022E26C8800109B4B /* ReachabilityStatus.swift in Sources */,
 				C522F9BE22E2495000109B4B /* MovieListTableViewController.swift in Sources */,
 				C522F9BC22E2494F00109B4B /* AppDelegate.swift in Sources */,

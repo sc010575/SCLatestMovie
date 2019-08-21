@@ -16,21 +16,19 @@ protocol MovieListViewModelCoordinatorDelegate: class
 
 
 protocol MovieListViewModelProtocol: class {
-    typealias VMDataItem = (title: String, userVote: String, posterPath: String, releaseDate: String)
-
-    var apiController: ApiControllerProtocol { get set }
     var state: Observer<State> { get set }
-    var movies: Observer<[VMDataItem]> { get set }
     var delegate: MovieListViewModelCoordinatorDelegate? { get set }
 
     func fetchMovies()
     func useItemAtIndex(_ index: Int)
     func moviesCount() -> Int
+    func movieAtIndex(_ index: Int) ->MovieListCellViewModel
 }
 
 extension MovieListViewModelProtocol {
-    func emptyVMData() -> VMDataItem {
-        return (title: "", userVote: "", posterPath: "", releaseDate: "")
+    func resultItem(for movie: Movie) -> MovieListCellViewModel {
+        let vmCellData = MovieListCellViewModel(movie:movie)
+        return vmCellData
     }
 }
 
@@ -39,13 +37,14 @@ enum State {
 }
 
 final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
-    var apiController: ApiControllerProtocol
-    var movies: Observer<[VMDataItem]> = Observer([])
+    private (set) var movieListController: MovieListUseCaseProtocol
+    private var movies = [MovieListCellViewModel]()
+
     var state: Observer<State> = Observer(.noResults)
     weak var delegate: MovieListViewModelCoordinatorDelegate?
 
-    init(_ apiController: ApiControllerProtocol = ApiController()) {
-        self.apiController = apiController
+    init(_ controller: MovieListUseCaseProtocol = MovieListUseCase()) {
+        self.movieListController = controller
     }
 
     //MARK:- Public methods
@@ -54,10 +53,9 @@ final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
         guard currentReachabilityStatus != .notReachable else {
             return self.state.value = .notReachable(error: "Not connected to the network")
         }
-
-
-        apiController.latestMovies(.date, onSuccess: { (movieList) in
+        movieListController.latestMovies(.date, onSuccess: { (movieList) in
             self.prepareViewModelData(movieList)
+            self.state.value = .success
         }, onFailure: { (apiError) in
                 switch apiError {
                 case .dataError(let errorMessage):
@@ -69,7 +67,7 @@ final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
     }
 
     func moviesCount() -> Int {
-        return movies.value.count
+        return movies.count
     }
 
     func useItemAtIndex(_ index: Int)
@@ -78,23 +76,18 @@ final class MovieListViewModel: NSObject, MovieListViewModelProtocol {
             delegate.MovieListViewModelDidSelect(self, on: index)
         }
     }
+    
+    func movieAtIndex(_ index: Int) -> MovieListCellViewModel {
+        return movies[index]
+    }
+    
 }
 
 private extension MovieListViewModel {
-
     func prepareViewModelData(_ movieList: MovieList) {
         movieList.saveMovieList()
-        movies.value = movieList.results.map {
+        movies = movieList.results.map {
             return resultItem(for: $0)
         }
-    }
-    
-    func resultItem(for movie:Movie) -> VMDataItem {
-        var vmData = emptyVMData()
-        vmData.title = movie.title
-        vmData.posterPath = movie.posterPath
-        vmData.releaseDate = movie.releaseDate ?? ""
-        vmData.userVote = movie.userVote(from: movie.voteAverage ?? 0)
-        return  vmData
     }
 }

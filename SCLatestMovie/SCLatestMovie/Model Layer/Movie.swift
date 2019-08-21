@@ -49,6 +49,16 @@ struct MovieList: Codable {
         movieList = StorageManager.load("Movies", with: MovieList.self)
         return movieList
     }
+    
+    func sortBy(_ type:SortBy) -> MovieList {
+        var sortedMovies = MovieList(results: [])
+        if type == .userVote {
+            sortedMovies = sortedResult()
+        } else {
+            sortedMovies = sortByDate()
+        }
+        return sortedMovies
+    }
 }
 
 struct Movie: Codable {
