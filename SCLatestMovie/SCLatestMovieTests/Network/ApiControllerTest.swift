@@ -13,7 +13,7 @@ import Nimble
 
 class ApiControllerTest: QuickSpec {
     var server: MockServer!
-    var apiController = ApiController()
+    var movieListUseCase = MovieListUseCase()
 
     override func spec() {
         describe("ApiControllerTest Test") {
@@ -29,7 +29,7 @@ class ApiControllerTest: QuickSpec {
                     self.server.respondToLatestMovies().start()
                     let downloadExpectiation = self.expectation(description: "Network service for movie list")
 
-                    self.apiController.latestMovies(.date, onSuccess: { (movieList) in
+                    self.movieListUseCase.latestMovies(.date, onSuccess: { (movieList) in
                         expect(movieList.results.count).to(equal(20))
                         expect(movieList.results[1].popularity).to(equal(28.149))
                         downloadExpectiation.fulfill()
@@ -48,7 +48,7 @@ class ApiControllerTest: QuickSpec {
                     self.server.respondToLatestMovies().start()
                     let downloadExpectiation = self.expectation(description: "Network service for movie list")
                     
-                    self.apiController.latestMovies(.userVote, onSuccess: { (movieList) in
+                    self.movieListUseCase.latestMovies(.userVote, onSuccess: { (movieList) in
                         expect(movieList.results.count).to(equal(20))
                         expect(movieList.results[1].popularity).to(equal(141.537))
                         downloadExpectiation.fulfill()
@@ -70,7 +70,7 @@ class ApiControllerTest: QuickSpec {
                     self.server.respondToLatestMoviesWithError().start()
                     let downloadExpectiation = self.expectation(description: "Network service for movie list")
 
-                    self.apiController.latestMovies(.date, onSuccess: { _ in
+                    self.movieListUseCase.latestMovies(.date, onSuccess: { _ in
                         
                     }, onFailure: { err in
                         switch err {

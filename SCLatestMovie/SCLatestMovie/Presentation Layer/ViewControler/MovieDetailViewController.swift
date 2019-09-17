@@ -10,28 +10,27 @@ import UIKit
 import SDWebImage
 
 class MovieDetailViewController: UIViewController {
-
-    var movie: Movie!
-
     @IBOutlet weak var posterImageView: UIImageView!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var movieTypeLabel: UILabel!
     @IBOutlet weak var popularityLabel: UILabel!
     @IBOutlet weak var genresLabel: UILabel!
 
+    var viewModel:MovieDetailViewModelProtocol!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupView()
     }
 
     fileprivate func setupView() {
-        overviewLabel .text = movie.overview
-        title = movie.title
-        popularityLabel.text = "Like: \(Int(movie.popularity ?? 0))👌"
-        movieTypeLabel.text = movie.movieType()
-        let genresText = movie.genresList()?.joined(separator: ", ")
-        genresLabel.text = genresText
-        guard let url = URL(string: Constant.ImageURL + movie.posterPath) else { return }
-        posterImageView.sd_setImage(with: url, completed: nil)
+        let vmData = viewModel.loadMovie()
+        self.overviewLabel.text = vmData.overview
+        self.title = vmData.title
+        self.popularityLabel.text = vmData.like
+        self.movieTypeLabel.text = vmData.movieType
+        self.genresLabel.text = vmData.genre
+        guard let url = URL(string: Constant.ImageURL + vmData.posterPath) else { return }
+        self.posterImageView.sd_setImage(with: url, completed: nil)
     }
 }

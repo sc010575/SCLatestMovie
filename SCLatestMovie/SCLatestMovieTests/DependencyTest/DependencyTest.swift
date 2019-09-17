@@ -33,7 +33,7 @@ class DependencyTest: QuickSpec {
 
                     let viewModel = viewControllerOnTest?.viewModel as? FakeMovieListViewModel
                     expect(viewModel?.spyFetchMoviesCalled).to(beTrue())
-                    expect(viewModel?.movies.value.count).to(equal(2))
+                    expect(viewModel?.moviesCount()).to(equal(2))
                 }
                 it("Should called moviesCount") {
                     let viewModel = viewControllerOnTest?.viewModel as? FakeMovieListViewModel

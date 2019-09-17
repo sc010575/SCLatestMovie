@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MovieList: Decodable {
+struct MovieList: Codable {
     var results: [Movie]
 
     func sortedResult() -> MovieList {
@@ -39,9 +39,29 @@ struct MovieList: Decodable {
         })
         return movieList
     }
+    
+    func saveMovieList() {
+        StorageManager.save(self, with: "Movies")
+    }
+    
+    func loadMovieList() -> MovieList {
+        var movieList = MovieList(results: [])
+        movieList = StorageManager.load("Movies", with: MovieList.self)
+        return movieList
+    }
+    
+    func sortBy(_ type:SortBy) -> MovieList {
+        var sortedMovies = MovieList(results: [])
+        if type == .userVote {
+            sortedMovies = sortedResult()
+        } else {
+            sortedMovies = sortByDate()
+        }
+        return sortedMovies
+    }
 }
 
-struct Movie: Decodable {
+struct Movie: Codable {
 
     enum Rating: Double {
         typealias RawValue = Double

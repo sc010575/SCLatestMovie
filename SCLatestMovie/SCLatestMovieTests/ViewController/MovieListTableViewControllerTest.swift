@@ -24,7 +24,10 @@ class MovieListTableViewControllerTest: QuickSpec {
                     viewControllerOnTest = storyboard.instantiateViewController(withIdentifier: "MovieListTableViewController") as? MovieListTableViewController
                     self.server.respondToLatestMovies().start()
                     let apiController = ApiController()
-                    let viewModel = MovieListViewModel(apiController)
+                    let movieListUseCase = MovieListUseCase(apiController)
+                    let viewModel = MovieListViewModel(movieListUseCase)
+                    let dataSource = MovieListDataSource(viewModel)
+                    viewControllerOnTest?.dataSource = dataSource
                     viewControllerOnTest?.viewModel = viewModel
                     viewControllerOnTest?.preloadView()
                     let (_, tearDown) = (viewControllerOnTest?.appearInWindowTearDown())!
