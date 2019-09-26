@@ -6,6 +6,12 @@ Latest Movie list and details about movies to watch
 - Movies will show in the assending order of the user voting average
 - Select any movies will show the details page where app will cover details like poster image, overview, popularity, movie type(adult/universal) and movie genres.
 
+### Screenshots 
+
+![LMV1](https://user-images.githubusercontent.com/1453658/65700073-f2749480-e076-11e9-9a00-bb1beabec15d.png)
+![LCMV2](https://user-images.githubusercontent.com/1453658/65700075-f2749480-e076-11e9-9ea6-e39426353419.png)
+
+
 ### Api Links
 - https://api.themoviedb.org/3/movie/upcoming?api_key=449d682523802e0ca4f8b06d8dcf629c&language=en-US
 
